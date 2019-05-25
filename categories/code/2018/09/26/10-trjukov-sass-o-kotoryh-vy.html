@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="ru_RU"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:image" content="/assets/images/losthuman.jpg" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>10 трюков Sass о которых вы возможно никогда не знали | Losthuman</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="10 трюков Sass о которых вы возможно никогда не знали" />
+<meta property="og:locale" content="ru_RU" />
+<meta name="description" content="Хотя существуют другие препроцессоры CSS, Sass уже давно является самым популярным вариантом в веб-сообществе. Он многофункциональный, стабильный и мощный. Более того, большое сообщество пользователей означает, что поддержка и советы со стороны сообщества помогут решить любую проблему. В этой статье мы предлагаем 10 лучших советов для большей эффективности от использования Sass." />
+<meta property="og:description" content="Хотя существуют другие препроцессоры CSS, Sass уже давно является самым популярным вариантом в веб-сообществе. Он многофункциональный, стабильный и мощный. Более того, большое сообщество пользователей означает, что поддержка и советы со стороны сообщества помогут решить любую проблему. В этой статье мы предлагаем 10 лучших советов для большей эффективности от использования Sass." />
+<link rel="canonical" href="https://losthuman.ru/categories/code/2018/09/26/10-trjukov-sass-o-kotoryh-vy.html" />
+<meta property="og:url" content="https://losthuman.ru/categories/code/2018/09/26/10-trjukov-sass-o-kotoryh-vy.html" />
+<meta property="og:site_name" content="Losthuman" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-09-26T00:00:00+05:00" />
+<script type="application/ld+json">
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://losthuman.ru/categories/code/2018/09/26/10-trjukov-sass-o-kotoryh-vy.html"},"url":"https://losthuman.ru/categories/code/2018/09/26/10-trjukov-sass-o-kotoryh-vy.html","headline":"10 трюков Sass о которых вы возможно никогда не знали","dateModified":"2018-09-26T00:00:00+05:00","description":"Хотя существуют другие препроцессоры CSS, Sass уже давно является самым популярным вариантом в веб-сообществе. Он многофункциональный, стабильный и мощный. Более того, большое сообщество пользователей означает, что поддержка и советы со стороны сообщества помогут решить любую проблему. В этой статье мы предлагаем 10 лучших советов для большей эффективности от использования Sass.","datePublished":"2018-09-26T00:00:00+05:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css">
+  
+  <link rel="stylesheet" href="/assets/likely.css"><link type="application/atom+xml" rel="alternate" href="https://losthuman.ru/feed.xml" title="Losthuman" /><script>
+if(!(window.doNotTrack === "1" || navigator.doNotTrack === "1" || navigator.doNotTrack === "yes" || navigator.msDoNotTrack === "1")) {
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-116379514-1', 'auto');
+  ga('send', 'pageview');
+}
+</script>
+  
+</head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper">
+
+    <a class="site-title" rel="author" href="/">Losthuman</a>
+
+    
+      <nav class="site-nav site-nav-custom">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+          
+          
+          
+        
+          
+          
+          <a class="page-link" href="/about/">О проекте</a>
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+          <a class="page-link" href="/categories/technews/index.html">Technews</a>
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+          <a class="page-link" href="/categories/code/index.html">Code</a>
+          
+        
+          
+          
+        
+          
+          
+          <a class="page-link" href="/categories/library/index.html">Library</a>
+          
+        
+        </div>
+      </nav>
+   
+  </div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-format="fluid"
+     data-ad-layout-key="-fg+4w-s-a4+kz"
+     data-ad-client="ca-pub-5706627784425194"
+     data-ad-slot="4102621418"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-8">
+              
+              <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">10 трюков Sass о которых вы возможно никогда не знали</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2018-09-26T00:00:00+05:00" itemprop="datePublished">Sep 26, 2018
+      </time></p>
+  </header>
+  
+  <div class="post">               
+      <div class="post-image">
+          <img src="/assets/images/2018-09-26-10-trjukov-SASS-o-kotoryh-vy/top_image.jpg" alt="Картинка" >
+      </div>
+  </div>
+  
+  
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>Хотя существуют другие препроцессоры CSS, Sass уже давно является самым популярным вариантом в веб-сообществе. Он многофункциональный, стабильный и мощный. Более того, большое сообщество пользователей означает, что поддержка и советы со стороны сообщества помогут решить любую проблему. В этой статье мы предлагаем 10 лучших советов для  большей эффективности от использования Sass.</p>
+
+<h4 id="01-вложенность">01. Вложенность</h4>
+
+<p>Возможность отражать вложенность иерархии стиля HTML в CSS, возможно, является самым большим преимуществом, которое Sass как препроцессорв в сравнении с регулярным CSS. Это избавляет вас от постоянных повторений кода, упрощает поддержку проекта в будущем и код гораздо удобнее читается, поскольку вы можете точно видеть, какое правило относится к какому селектору:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Обычный CSS
+    .foo { .. }
+    .foo ul { .. }
+    .foo ul li { .. }
+
+// Sass
+    .foo {
+     	..
+     	ul {
+     	..
+     	li { ..}
+     	}
+    }
+</code></pre></div></div>
+
+<h4 id="02-reference-symbol">02. Reference symbol</h4>
+
+<p>При вложенности вы можете использовать символ <code class="highlighter-rouge">&amp;</code> для ссылки на родительский элемент. Это здорово помогает при написании стилей CSS. Во-первых, вы можете аккуратно вставлять псевдо-состояния или элементы:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.foo {
+ 	background-color: red;
+ 	&amp;:hover { background-color: blue; }
+ 	&amp;:after { content: 'bar'; } 
+    }
+</code></pre></div></div>
+
+<p>… ну, и во-вторых, избавииться от надоедливого переписывания селекторов и классов:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.foo {
+ 	background-color: red; 
+ 	&amp;.bar { background-color: green; }
+	.ie &amp;.bar { background-color: yellow; } 
+}
+
+// =&gt;
+.foo { background-color: red;}
+.foo.bar { background-color: green; } 
+.ie .foo.bar { background-color: yellow; } 
+</code></pre></div></div>
+
+<h4 id="03-переменные">03. Переменные</h4>
+
+<p>Все переменныев Sass начинаются с символа <code class="highlighter-rouge">$</code> за которым следует наименование переменной без пробела:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$breakpoint-sm: 576px;
+</code></pre></div></div>
+
+<p>Такой подход делает работу с глобальными значениями такими как цвета, шрифты и 
+Which makes handling global values such as colours, fonts and контрольные точки (breakpoint) невероятно легко.</p>
+
+<h4 id="04-переменные-объектов">04. Переменные объектов</h4>
+
+<p>В Sass, переменные также могут быть записаны как объект. Например объект с записанными в него переменными  для breakpoint’а:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$grid-breakpoints: (
+ sm: 576px,
+ md: 768px,
+ lg: 992px
+);
+</code></pre></div></div>
+
+<p>Для получения (извлечения) переменных, записанных в объект можно импользовать функцию Sass <code class="highlighter-rouge">map-get</code> которая возвращает переменные по ключу, передаваемого в функцию в качестве аргумента. В примере ниже будем использовать эту функцию для определения значения <code class="highlighter-rouge">max-width</code> для медиа запроса:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@function breakpoint-var($breakpoint) {
+   @return map-get($grid-breakpoints, $breakpoint);
+}
+
+@media (max-width: breakpoint-var(lg)) {
+}
+
+// =&gt; @media (max-width: 992px) {
+// 
+// }
+</code></pre></div></div>
+
+<p>И, хотя, сейчас CSS имеет функцию <code class="highlighter-rouge">var()</code>, которая позволяет создавать простые переменные с префиксом <code class="highlighter-rouge">--</code>, но препроцессор Sass намного эффективнее.</p>
+
+<h4 id="05миксины">05.Миксины</h4>
+
+<p>Миксины предоставляют мощь переиспользования кода в CSS. С миксинами вместо того, чтобы в таблице стилей переписывать один ии тот же код несколько раз вы можете просто включить миксину в стиль элемента:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@mixin foo() {
+	border: 1px solid red;
+}
+
+.bar {
+	@include foo();
+}
+
+// =&gt; 
+// .bar { border: 1px solid red; }
+</code></pre></div></div>
+
+<p>Вы можете также настроить параметры для миксин так что можно будет использовать одни и те же стили, но с необходимыми изменениями аргументов, передаваемых в миксины. Вы также можете настроить значения параметров по умолчанию для таких аргументов:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@mixin foo($width: 1px, $color: red) {
+	border: 1px solid red;
+}
+
+.bar {
+	@include foo();
+}
+
+.bax {
+	 @include foo(5px, blue);
+}
+
+// =&gt; 
+// .bar { border: 1px solid red; }
+// .baz { border: 5px solid blue; }
+</code></pre></div></div>
+
+<h4 id="06-функции">06. Функции</h4>
+
+<p>Функции и миксины  часто могут быть взаимозаменяемыми и достигать одного и того же результата, но смысл их применения несколько отличаются. Как и во многих вопросах программирования, главным здесь является логика использования: миксины используются преимущественно для включений, а функции - больше для получения возвращаемых значений. Например, функция <code class="highlighter-rouge">breakpoint-var()</code>, которую мы использовали ранее, возвращает значение, чего не делают миксины.</p>
+
+<h4 id="07-расширения-extends">07. Расширения (@extends)</h4>
+
+<p>Это, если так можно выразится, бриллиант, для сокращения дублирования кода в CSS, и позволяя классам совместно использовать один набор свойств.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.foo {
+ 	color: black;
+ 	border: 1px solid black;
+}
+
+.bar {
+ 	@extend .foo;
+ 	background-color: red;
+}
+
+
+// =&gt;
+.foo, .bar {
+ 	color: black;
+ 	border: 1px solid black;
+}
+.bar { background-color: red; }
+</code></pre></div></div>
+
+<p>Вы можете даже передать через расширение стили нескольких селекторов:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@extend .foo, .bar;
+</code></pre></div></div>
+
+<p>Кроме того, использование расширений отчасти помогает оптимизировать использование классов в HTML-коде:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Без @extend
+.foo {
+	 background-color: red;
+ 		border: 1px solid blue;
+ color: black;
+}
+
+.bar { background-color: green; }
+&lt;div class="foo bar"&gt;...&lt;/div&gt;
+
+// С @extend
+.foo {
+ background-color: red;
+ border: 1px solid blue;
+ color: black;
+}
+
+.bar {
+ @extend .foo;
+ background-color: green;
+}
+&lt;div class="bar"&gt;...&lt;/div&gt;
+</code></pre></div></div>
+
+<p>Единственный недостаток - это резкое увеличение размера таблицы стилей.</p>
+
+<h4 id="08-иморт-import">08. Иморт (@import)</h4>
+
+<p>Нет ничего более неприятного или вызывающего головную боль, чем слишком большая таблица стилей, особенно если вы работаете только с одной ее частью. К счастью, Sass позволяет вам разделить файл таблицы стилей на несколько файлов, а затем использовать <code class="highlighter-rouge">@import</code>, чтобы импортировать стили тогда, когда они понадобятся.</p>
+
+<p>Например, если вы хотите импортировать отдельные стили для кнопок, мы можемназвать файл <code class="highlighter-rouge">_buttons.scss</code> и затем просто добавить <code class="highlighter-rouge">@import buttons</code> в основной файл с таблицами стилей Sass. Точно также, как и с директивой <code class="highlighter-rouge">@extend</code> вы можете импортировать множество файлов, заделеяя их названия  запятой:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@import 'buttons', 'forms';
+</code></pre></div></div>
+
+<p>Вы можете импортировать внутрь селектора:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.foo {
+ 	@import 'bar';
+}
+</code></pre></div></div>
+
+<p>И можно сделать даже так:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@import 'utils/mixins';
+
+.foo {
+	 @import 'components/buttons';
+}
+</code></pre></div></div>
+
+<p>Это предоставляет вам полную свободу при построении архитектуры стилей вашего проекта.</p>
+
+<h4 id="09-циклы">09. Циклы</h4>
+
+<p>Вы можете выполнять циклы в Sass, используя три основных правила:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@for - цикл для заданного количества итераций с доступом 
+к индексу на каждой итерации цикла 
+	
+@while - повторение цикла до тех пор, пока 
+верно условие 
+
+@each - проверка каждого элемента в списке 
+</code></pre></div></div>
+
+<p>Если у вас есть опыт работы с JavaScript (или большинством языков программирования), вы должны быть ознакомлены с принципами работы циклов. Например, вся система Flex-grid от Bootstrap встроена в Sass, используя циклы. Более простой пример показывает как с помощью цикла можно быстро создать ступенчатую анимацию затухания для элементов, использующих тэг <code class="highlighter-rouge">nth-child</code>:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.foo {
+ 	@for $i from 1 through 5 {
+ 	&amp;:nth-child( #{i} ) {
+ 	opacity: 1;
+ 	transition: opacity .5s;
+ 	transition-delay: #{($i * .05) + .05}s;
+ 	} 
+ }
+}
+</code></pre></div></div>
+
+<h4 id="10-интерполяция">10. Интерполяция</h4>
+
+<p>Цикл <code class="highlighter-rouge">@each</code> отлично работает с мощной функцией, называемой интерполяцией -  способ использования содержимого значений, которые вы зацикливаете (синтаксис <code class="highlighter-rouge"># {VALUE}</code>). Итак, если мы хотим настроить стиль для  заголовка, используя переменную объекта с ключами и значениями, мы могли бы сделать следующее:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$fonts: (
+ 	h1: 24px,
+ 	h2: 20px,
+ 	h3: 16px
+);
+
+@each $element, $size in $fonts {
+ 	#{$element} {
+ 	font-size: $size;
+ 	line-height: ($size * 1.5);
+ 	}
+}
+</code></pre></div></div>
+
+<p><a href="https://www.creativebloq.com/advice/10-things-you-never-knew-you-could-do-with-sass">Источник</a></p>
+
+  </div>
+
+  <div class="likely">
+    <div class="telegram" data-url="https://losthuman.ru/categories/code/2018/09/26/10-trjukov-sass-o-kotoryh-vy.html" data-title="10 трюков Sass о которых вы возможно никогда не знали">Отправить</div>
+    <div class="vkontakte" data-url="https://losthuman.ru/categories/code/2018/09/26/10-trjukov-sass-o-kotoryh-vy.html" data-title="10 трюков Sass о которых вы возможно никогда не знали">Поделиться</div>
+    <div class="odnoklassniki" data-url="https://losthuman.ru/categories/code/2018/09/26/10-trjukov-sass-o-kotoryh-vy.html" data-title="10 трюков Sass о которых вы возможно никогда не знали">Класснуть</div>
+    <div class="facebook" data-url="https://losthuman.ru/categories/code/2018/09/26/10-trjukov-sass-o-kotoryh-vy.html" data-title="10 трюков Sass о которых вы возможно никогда не знали">Поделиться</div>
+    <div class="gplus" data-url="https://losthuman.ru/categories/code/2018/09/26/10-trjukov-sass-o-kotoryh-vy.html" data-title="10 трюков Sass о которых вы возможно никогда не знали">Плюсануть</div>
+    <div class="twitter" data-url="https://losthuman.ru/categories/code/2018/09/26/10-trjukov-sass-o-kotoryh-vy.html" data-title="10 трюков Sass о которых вы возможно никогда не знали">Твитнуть</div>
+  </div>
+
+  <div class="article-ad">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle"
+         style="display:block; text-align:center;"
+         data-ad-layout="in-article"
+         data-ad-format="fluid"
+         data-ad-client="ca-pub-5706627784425194"
+         data-ad-slot="8358109938"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://losthuman-ru.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a class="u-url" href="/categories/code/2018/09/26/10-trjukov-sass-o-kotoryh-vy.html" hidden></a>
+</article>
+
+              
+            </div>
+            <div class="col-md-4">
+              
+               <div class="article-ad">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- losthuman-aside -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5706627784425194"
+     data-ad-slot="4814492309"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+               <ul>
+                 <h4>Tags</h4>
+                
+                  <li class="tags"><a href="/tags/iphone">#iphone</a> </li>
+                
+                  <li class="tags"><a href="/tags/apple">#apple</a> </li>
+                
+                  <li class="tags"><a href="/tags/security">#security</a> </li>
+                
+                  <li class="tags"><a href="/tags/hackers">#hackers</a> </li>
+                
+                  <li class="tags"><a href="/tags/google">#google</a> </li>
+                
+                  <li class="tags"><a href="/tags/angular">#angular</a> </li>
+                
+                  <li class="tags"><a href="/tags/programming">#programming</a> </li>
+                
+                  <li class="tags"><a href="/tags/gagets">#gagets</a> </li>
+                
+                  <li class="tags"><a href="/tags/regex">#regex</a> </li>
+                
+                  <li class="tags"><a href="/tags/wordpress">#wordpress</a> </li>
+                
+                  <li class="tags"><a href="/tags/python">#python</a> </li>
+                
+                  <li class="tags"><a href="/tags/twitter">#twitter</a> </li>
+                
+                  <li class="tags"><a href="/tags/shazam">#shazam</a> </li>
+                
+                  <li class="tags"><a href="/tags/application">#application</a> </li>
+                
+                  <li class="tags"><a href="/tags/photo">#photo</a> </li>
+                
+                  <li class="tags"><a href="/tags/css">#css</a> </li>
+                
+                  <li class="tags"><a href="/tags/bittorrent">#bittorrent</a> </li>
+                
+                  <li class="tags"><a href="/tags/amazon">#amazon</a> </li>
+                
+                  <li class="tags"><a href="/tags/swift">#swift</a> </li>
+                
+                  <li class="tags"><a href="/tags/IOS">#IOS</a> </li>
+                
+                  <li class="tags"><a href="/tags/uber">#uber</a> </li>
+                
+                  <li class="tags"><a href="/tags/npm">#npm</a> </li>
+                
+                  <li class="tags"><a href="/tags/nodejs">#nodejs</a> </li>
+                
+                  <li class="tags"><a href="/tags/code">#code</a> </li>
+                
+                  <li class="tags"><a href="/tags/code swift">#code swift</a> </li>
+                
+              </ul>
+              <div class="btcwdgt-chart">
+style="margin-top: 30px">
+    <script>
+      (function(b,i,t,C,O,I,N) {
+        window.addEventListener('load',function() {
+          if(b.getElementById(C))return;
+          I=b.createElement(i),N=b.getElementsByTagName(i)[0];
+          I.src=t;I.id=C;N.parentNode.insertBefore(I, N);
+        },false)
+      })(document,'script','https://widgets.bitcoin.com/widget.js','btcwdgt');
+    </script>
+  </div>
+            </div>
+          </div>
+        </div>
+              <div class="article-ad">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle"
+         style="display:block; text-align:center;"
+         data-ad-layout="in-article"
+         data-ad-format="fluid"
+         data-ad-client="ca-pub-5706627784425194"
+         data-ad-slot="8358109938"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+              
+    </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Losthuman</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Losthuman</li><li><a class="u-email" href="mailto:info@losthuman.ru">info@losthuman.ru</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://twitter.com/losthuman9"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">losthuman9</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Ничего особо ценного</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+<script src="/assets/likely.js"></script>
+  </body>
+
+</html>

@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="ru_RU"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:image" content="/assets/images/losthuman.jpg" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Swift: выражения, переменные и константы. Часть 1 | Losthuman</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Swift: выражения, переменные и константы. Часть 1" />
+<meta property="og:locale" content="ru_RU" />
+<meta name="description" content="Добро пожаловать в мини-серию о начале программирования на языке Swift! В в этой серии вы узнаете основы программирования на Swift. Данный материал является переводом tutorial с сайта raywenderlich.com." />
+<meta property="og:description" content="Добро пожаловать в мини-серию о начале программирования на языке Swift! В в этой серии вы узнаете основы программирования на Swift. Данный материал является переводом tutorial с сайта raywenderlich.com." />
+<link rel="canonical" href="https://losthuman.ru/categories/code/2018/10/06/swift-uchebnik-chast-1-vyrazhenija.html" />
+<meta property="og:url" content="https://losthuman.ru/categories/code/2018/10/06/swift-uchebnik-chast-1-vyrazhenija.html" />
+<meta property="og:site_name" content="Losthuman" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-10-06T00:00:00+05:00" />
+<script type="application/ld+json">
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://losthuman.ru/categories/code/2018/10/06/swift-uchebnik-chast-1-vyrazhenija.html"},"url":"https://losthuman.ru/categories/code/2018/10/06/swift-uchebnik-chast-1-vyrazhenija.html","headline":"Swift: выражения, переменные и константы. Часть 1","dateModified":"2018-10-06T00:00:00+05:00","description":"Добро пожаловать в мини-серию о начале программирования на языке Swift! В в этой серии вы узнаете основы программирования на Swift. Данный материал является переводом tutorial с сайта raywenderlich.com.","datePublished":"2018-10-06T00:00:00+05:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css">
+  
+  <link rel="stylesheet" href="/assets/likely.css"><link type="application/atom+xml" rel="alternate" href="https://losthuman.ru/feed.xml" title="Losthuman" /><script>
+if(!(window.doNotTrack === "1" || navigator.doNotTrack === "1" || navigator.doNotTrack === "yes" || navigator.msDoNotTrack === "1")) {
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-116379514-1', 'auto');
+  ga('send', 'pageview');
+}
+</script>
+  
+</head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper">
+
+    <a class="site-title" rel="author" href="/">Losthuman</a>
+
+    
+      <nav class="site-nav site-nav-custom">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+          
+          
+          
+        
+          
+          
+          <a class="page-link" href="/about/">О проекте</a>
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+          <a class="page-link" href="/categories/technews/index.html">Technews</a>
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+          <a class="page-link" href="/categories/code/index.html">Code</a>
+          
+        
+          
+          
+        
+          
+          
+          <a class="page-link" href="/categories/library/index.html">Library</a>
+          
+        
+        </div>
+      </nav>
+   
+  </div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-format="fluid"
+     data-ad-layout-key="-fg+4w-s-a4+kz"
+     data-ad-client="ca-pub-5706627784425194"
+     data-ad-slot="4102621418"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-8">
+              
+              <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Swift: выражения, переменные и константы. Часть 1</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2018-10-06T00:00:00+05:00" itemprop="datePublished">Oct 6, 2018
+      </time></p>
+  </header>
+  
+  <div class="post">               
+      <div class="post-image">
+          <img src="/assets/images/2018-10-06-Swift-uchebnik-Chast-1-vyrazhenija/top_image.jpg" alt="Картинка" >
+      </div>
+  </div>
+  
+  
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>Добро пожаловать в мини-серию о начале программирования на языке Swift! В
+в этой серии вы узнаете основы программирования на Swift. Данный материал является переводом <a href="https://www.raywenderlich.com/6338-swift-tutorial-part-1-expressions-variables-and-constants">tutorial</a> с сайта <a href="https://www.raywenderlich.com">raywenderlich.com</a>.</p>
+
+<p>В этой серии вы познакомитесь с  основами программирования в современной, дружественной среде на языке программирования Swift.</p>
+
+<p>Вместо того, чтобы утомлять теорией, сразу же перейдем к кодированию
+с помощью Swift, используя Swift Playground - специальную среду разработки для тестирования отдельных фрагментов кода, в которой вы можете выполнять код напрямую без необходимости создавать полноценное приложение.</p>
+
+<p>Для этого урока вам понадобится Xcode 10, стандартная среда разработки
+для macOS <a href="https://developer.apple.com/xcode/">доступна здесь</a>. Если у вас
+Xcode версии 9 или ниже, некоторые фрагменты кода в этом руководстве не будет работать так, как ожидается.</p>
+
+<h3 id="с-чего-начать">С чего начать</h3>
+
+<p>Набор инструментов, которые используются для написания программного обеспечения, часто называют цепь инструментов. Часть цепочки инструментов, в которую вы пишете код, известна как интегрированная среда разработки (IDE). Xcode-это IDE, которая включает playground.</p>
+
+<p>Вы будете использовать playgrounds во всей этой серии, чтобы практиковать кодирование, так что важно понимать, как playground работает. Вот что вы изучите в остальной части этого руководства.</p>
+
+<h3 id="создание-playground">Создание Playground</h3>
+
+<p>Когда вы откроете Xcode, первое, что вы увидете будет окно приветствия:</p>
+
+<p><a href="https://koenig-media.raywenderlich.com/uploads/2018/08/swift-tutorial-part-1-welcome.png"><img src="https://koenig-media.raywenderlich.com/uploads/2018/08/swift-tutorial-part-1-welcome-650x381.png" alt="Welcome to Xcode" /></a></p>
+
+<p>Если вы не видите этот экран, это скорее всего потому, что в чекбоксе, расположенном в нижнем левом углу окна при пердыдущем запуске Xcode был была снят флажок. Вы также можете открыть экран нажатие клавиши <code class="highlighter-rouge">Command-Shift-1</code>. Вы также можете нажать <code class="highlighter-rouge">Window ▸ Welcome to Xcode</code> в меню.</p>
+
+<p>На экране приветствия вы можете быстро перейти в playground, нажав на <code class="highlighter-rouge">Get started with a playground</code>. После чего Xcode представит вам возможность выбора шаблона.</p>
+
+<p><a href="https://koenig-media.raywenderlich.com/uploads/2018/07/swift-tutorial-part-1-template.png"><img src="https://koenig-media.raywenderlich.com/uploads/2018/07/swift-tutorial-part-1-template-590x500.png" alt="Template" /></a></p>
+
+<p>Выбранная платформа определяет, какая версия шаблона Xcode будет использоваться для создания файла playground. В нашем примере можно выбрать: iOS, macOS или
+tvOS. Каждая платформа имеет свою собственную среду и готова для операций с кодом в playground. Для целей данного руководства, выберите  шаблон <code class="highlighter-rouge">Blank</code> и нажмите <code class="highlighter-rouge">Next</code>.</p>
+
+<p>Теперь Xcode попросит вас указать наименование файла playground и выбрать место для его сохранения. Название может быть любое поэтому, когда вы создаете свои файлы playground, не стесняйтесь выбирать правильные имена  - это поможет вам в будущем вспомнить, какой код в том или ином файле playground.</p>
+
+<p>Нажмите <code class="highlighter-rouge">Create</code>, чтобы создать и сохранить файл playground. Xcode создаст файл:</p>
+
+<p><a href="https://koenig-media.raywenderlich.com/uploads/2018/07/swift-tutorial-part-1-create-1.png"><img src="https://koenig-media.raywenderlich.com/uploads/2018/07/swift-tutorial-part-1-create-1-650x442.png" alt="Create" /></a></p>
+
+<p>Новые файлы playground не создаются полностью пустым, даже, если для их создания используется шаблон <code class="highlighter-rouge">Blank</code>, они имеют базовый код. Не волнуйтесь - вы скоро узнаете, что означает этот код.</p>
+
+<h4 id="обзор-playground">Обзор Playground</h4>
+
+<p>На первый взгляд, может показаться, что playground выглядит как необычный текстовый редактор. Что ж, на самом деле это так и есть! Почти.</p>
+
+<p><a href="https://koenig-media.raywenderlich.com/uploads/2018/07/swift-tutorial-part-1-overview.png"><img src="https://koenig-media.raywenderlich.com/uploads/2018/07/swift-tutorial-part-1-overview-650x435.png" alt="Overview" /></a></p>
+
+<p>На скриншоте выше показаны первые и самые важные вещи, которые нужно знать работая в редакторе playground:</p>
+
+<ol>
+  <li><code class="highlighter-rouge">Source editor</code> (редактора исходного кода): это область, в которой вы будете писать код  на Swift. Это похоже на текстовый редактор, такой как «Блокнот» или «TextEdit». Вы заметите, что он использует так называемый моноширинный шрифт, что означает, что все символы имеют одинаковую ширину. Это упрощает чтение и форматирование кода.
+  </li>
+  <li><code class="highlighter-rouge">Results sidebar</code> (боковая панель результатов): Эта область показывает результаты при выполнении кода. Вы узнаете больше о том, как выполняется код, когда более детально ознакомитесь с данным руководством. Боковая панель результатов - это основное место, которое вы будете искать, чтобы убедиться в том, что ваш код работает так, как ожидалось.
+  </li>
+  <li><code class="highlighter-rouge">Execution control</code>: код в playground выполняется автоматически по умолчанию, что означает, что вы можете писать код и сразу видеть результат. В то же время этот элемент управления позволяет выполнять код тогда, когда это нужно. Удерживание кнопки<code class="highlighter-rouge"> ▶ ︎ (Execute)</code> позволяет переключаться между режимами автоматического выполнения и ручным режимом.
+  </li>
+  <li><code class="highlighter-rouge">Activity viewer</code>: показывает статус playground. На скриншоте выше показано, что playground закончил выполнение  кода. Когда playground находится в процессе исполнения кода  <code class="highlighter-rouge">Activity viewer</code> демонстрирует крутящийся спинер..
+  </li>
+  <li><code class="highlighter-rouge">Panel controls</code>: эти переключатели показывают и скрывают три панели, одна из которых отображается слева, одна внизу и одна справа. Каждая из панелей отображает дополнительную информацию, которая вам может потребоваться время от времени. Обычно они скрыты, так как они представлены на скриншоте. Вы узнаете больше о каждой из этих панелей при изучении данного руководства.</li>
+</ol>
+
+<p>Playground  выполняет код в редакторе исходного кода сверху вниз. Каждый раз, когда вы изменяете код, playground будет заново выполнять код. Можно
+также запускать повторное выполнение, нажав <code class="highlighter-rouge">Editor ▸ Run Playground</code> в меню. Кроме того, вы можете использовать элемент управления выполнением.</p>
+
+<p>Вы можете включить номера строк в левой части редактора исходного кода, нажав
+<code class="highlighter-rouge">Xcode ▸ Preferences… ▸ Text Editing ▸ Line Numbers</code> в  меню. Номера строк могут быть очень полезны, когда вы хотите обратиться к фрагментам вашего кода.</p>
+
+<p>Когда playground завершит выполнение кода, Xcode обновит боковую панель результатов чтобы показать результаты соответствующих строк в редакторе исходного кода.</p>
+
+<p>Комментарии в коде, арифметические операции, константы и переменные являются фундаментом  любого языка, и Swift в этом смысле ничем не отличается.</p>
+
+<h3 id="коментарии-в-коде">Коментарии в коде</h3>
+
+<p>Компилятор Swift генерирует исполняемый код из редактора исходного кода. Для выполнения этого, он использует код. Иногда большой объем кода не позволит вам по прошествии определенного времени вспомнить, почему вы написали свой код определенным образом или даже какую проблему вы решаете с помощью того или иного фрагмента кода. Чтобы этого не случилось, целесообразно хорошо документировать свой код, чтобы другой человек, который знакомится с вашим кодом, сможет понять его.</p>
+
+<p>Swift, как и большинство других языков программирования, позволяет документировать код через использование так называемых комментариев. Они позволяют писать любой текст непосредственно рядом с вашим кодом, который игнорируется компилятором.</p>
+
+<p>Первый способ написать комментарий выглядит так:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Это комментарий. Он не выполняется компилятором.
+</code></pre></div></div>
+
+<p>Это однострочный комментарий. Вы можете писать их так, чтобы получались целые
+абзацы:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Это тоже комментарий.
+// Из нескольких строк.
+</code></pre></div></div>
+
+<p>Однако есть лучший способ написать комментарии, которые состоят из нескольких строк. Вот так:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/* Это тоже комментарий.
+   Из многих...
+   многих...
+   многих строк. */
+</code></pre></div></div>
+
+<p>Это многострочный комментарий. Начало обозначается символом <code class="highlighter-rouge">/ *</code>, а конец -
+обозначается символом <code class="highlighter-rouge">* /</code>. Все просто!</p>
+
+<p>Вы должны использовать комментарии в своем коде, где это необходимо, чтобы документировать ваш код, объяснять ваши рассуждения или просто оставить шутки для своих коллег. :]</p>
+
+<h3 id="комманда-print">Комманда print()</h3>
+
+<p>Также полезно увидеть результаты того, что делает ваш код. В Swift вы можете добиться этого с помощью команды <code class="highlighter-rouge">print()</code>.</p>
+
+<p><code class="highlighter-rouge">print</code> выводит все, что вы хотите, в область отладки, которая иногда называемый консолью.</p>
+
+<p>Например, рассмотрим следующий код:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>print("Привет, читатель!")
+</code></pre></div></div>
+
+<p>Эта комманда выведет сообщение в область отладки:</p>
+
+<p><a href="https://koenig-media.raywenderlich.com/uploads/2018/07/swift-tutorial-part-1-print.png"><img src="https://koenig-media.raywenderlich.com/uploads/2018/07/swift-tutorial-part-1-print-650x442.png" alt="Print" /></a></p>
+
+<p>Вы можете скрыть или отобразить область отладки, используя кнопку-стрелку в нижнем левом углу окна ;выделено красным цветом на изображении выше). Вы также можете нажать <code class="highlighter-rouge">View ▸ Debug Area ▸ Show Debug Area </code>в меню, чтобы сделать то же самое.</p>
+
+<h3 id="арифметические-операции">Арифметические операции</h3>
+
+<p>Когда вы берете одну или несколько частей данных и превращаете их в другие
+данные, это называется операцией.</p>
+
+<p>Самый простой способ понять операции - вспомнить об арифметике. Операция сложения принимает два числа и преобразует их в сумму двух этих чисел. Операция вычитания принимает два числа и преобразует их вразницу этих двух чисел.</p>
+
+<p>Вы найдете простую арифметику во всех приложениях: от подсчета количества
+лайков, до расчета правильного размера и положения кнопки или окна, цифры действительно присутствуют везде!</p>
+
+<p>В этом разделе вы узнаете о различных арифметических операциях, которые
+Свифт может предложить, рассматрите как они применяются к числам. Позже вы увидите операции для типов, отличных от чисел.</p>
+
+<h4 id="простые-операции">Простые операции</h4>
+
+<p>Все операции в Swift используют символ, известный как оператор, для обозначения типа операции которую они выполняют.</p>
+
+<p>Рассмотрим четыре арифметические операции, которые вы изучили в начальной школе: сложение, вычитание, умножение и деление. Для этих простых операций, Swift использует следующие операторы:</p>
+
+<ul>
+  <li>Сложение: <code class="highlighter-rouge">+</code></li>
+  <li>Вычитание: <code class="highlighter-rouge">-</code></li>
+  <li>Умножение: <code class="highlighter-rouge">*</code></li>
+  <li>Деление: <code class="highlighter-rouge">/</code></li>
+</ul>
+
+<p>Примеры использования операторов:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2 + 6
+
+10 - 2
+
+2 * 4
+
+24 / 3
+</code></pre></div></div>
+
+<p>Каждая из этих строк есть не что иное, как вражение. Выражение имеет значение. В этих случаяхвсе четыре выражения имеют одно и то же значение - 8. Вы пишите код для выполнения указанных арифметических операций точно также, как вы могли бы  написать выражения используя перо и бумагу.</p>
+
+<p><a href="https://koenig-media.raywenderlich.com/uploads/2018/07/swift-tutorial-part-1-broken-paper.png"><img src="https://koenig-media.raywenderlich.com/uploads/2018/07/swift-tutorial-part-1-broken-paper-650x355.png" alt="Broken paper" /></a></p>
+
+<p>В вашем playground вы можете видеть значения этих выражений в правой части окна редактора, называемой боковая панель результатов:</p>
+
+<p><a href="https://koenig-media.raywenderlich.com/uploads/2018/07/swift-tutorial-part-1-expressions.png"><img src="https://koenig-media.raywenderlich.com/uploads/2018/07/swift-tutorial-part-1-expressions-650x254.png" alt="Expressions" /></a></p>
+
+<p>Если хотите, то можно удалить пробелы между аргументами выражения:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2+6
+</code></pre></div></div>
+
+<p>Удаление пробелов между аргументами выражения должно осуществляться по принципу “все или ничего”. Не получится что-то удалит, а что-то оставить. Пример ниже объясняет такой подход:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2+6   // OK
+2 + 6 // OK
+2 +6  // ERROR
+2+ 6  // ERROR
+</code></pre></div></div>
+
+<p>Часто бывает проще читать выражения, если по обе стороны от них есть пробелы.</p>
+
+<h4 id="десятичные-числа">Десятичные числа</h4>
+
+<p>Для выполнения операций описанных ранее использовались целые числа, больше известные как <code class="highlighter-rouge">integers</code>. Однако как вы знаете не каждое число может быть целым.</p>
+
+<p>Как пример рассмотрим
+ следующее выражение:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>22 / 7
+</code></pre></div></div>
+
+<p>Вы можете удивиться, узнав, что результат данногов ыражения будет равен 3. Если вы используете только <code class="highlighter-rouge">integers</code> (целые числа) в выражении, Swift вычислит результат как <code class="highlighter-rouge">integers</code>. В этом случае, результат округляется до следующего целого числа.</p>
+
+<p>Можно прямо указать Swift’у что необходимо использовать десятичные числа изменив аргументы выражения:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>22.0 / 7.0
+</code></pre></div></div>
+
+<p>В этот раз результат будет равен <code class="highlighter-rouge">3.142857142857143</code>, как и ожидалось.</p>
+
+<h4 id="оператор-остатка-от-деления">Оператор остатка от деления</h4>
+
+<p>Четыре операции, которые вы видели до сих пор легко понять, потому что вы
+делали их большую часть своей жизни. Swift также имеет более сложные операции. Сейчас вы с ними познакомитесь.</p>
+
+<p>Первая из них - операция остатка, также называемая модулем. При делении знаменатель переходит в числитель целым числом, при этом остается остаток. Этот остаток - именно то, что операция остатка от деления возвращает. Например, 10 по модулю 3 равно 1, потому что 3 делит 10 три раза нацело, с остатком 1.</p>
+
+<p>В Swift оператор остатка от деления обозначается символом <code class="highlighter-rouge">%</code> и используется следующим образом:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>28 % 10
+</code></pre></div></div>
+
+<p>В этом случае результат операции будет равен <code class="highlighter-rouge">8</code>, потому, что 10 делит 28 нацело два раза с остатком 8. Если вы захотите получить остаток отделения десятичных чисел, вы можете сделать это следующим образом:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(28.0).truncatingRemainder(dividingBy: 10.0)
+</code></pre></div></div>
+
+<p>Это выражение делит 28 на 10, а затем обрезает результат, отрезая любые
+дополнительные десятичные числа, и возвращает оставшуюся часть. Результат идентичен ` %`, когда нет десятичных знаков.</p>
+
+<h4 id="операции-сдвига-битовые-операции">Операции сдвига (битовые операции)</h4>
+
+<p>Операции сдвиг влево и сдвиг вправо принимают двоичную форму десятичного
+числа и сдвигают цифры влево или вправо соответственно. Затем они возвращают
+десятичную форму нового двоичного числа.</p>
+
+<p>Например, десятичное число 14 в двоичном формате, представляющее собой 8 цифр, равно <code class="highlighter-rouge">00001110</code>. Смещение влево на два числа (разряда) приводит к <code class="highlighter-rouge">00111000</code>, что равно
+56 в десятичной системе.</p>
+
+<p>Вот иллюстрация того, что происходит во время этой операции сдвига:</p>
+
+<p><img src="https://koenig-media.raywenderlich.com/uploads/2018/09/shift_left.png" alt="shift_left" /></p>
+
+<p>Цифры, которые входят, чтобы заполнить пустоту справа, становятся 0.
+цифры, которые выпадают слева, теряются.</p>
+
+<p>Сдвиг вправо тоже самое, но цифры перемещаются вправо.</p>
+
+<p>Операторы для этих двух операций следующие:</p>
+
+<ul>
+  <li>Shift left: <code class="highlighter-rouge">&lt;&lt;</code></li>
+  <li>Shift right: <code class="highlighter-rouge">&gt;&gt;</code></li>
+</ul>
+
+<p>Это первые операторы, из тех, с которыми вы познакомились, которые состоят более чем из одного сомвола. На самом деле операторы могут содержать любое количество символов.</p>
+
+<p>Вот пример, который использует оба этих оператора:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1 &lt;&lt; 3
+
+32 &gt;&gt; 2
+</code></pre></div></div>
+
+<p>Оба этих значения эквивалентны 8.</p>
+
+<p>Одной из причин использования операции сдвигов является возведение в степень или извлечение квадратного корня, второй - простота. Обратите внимание, что сдвиг влево на одно число это то же самое, что возведение числа в степень 2 (получение квадрата числа), смещение влево на два - это то же самое, что возведение числа в 4-ую степень. Точно так же, смещение вправо на одно число - это то же самое, что извлечение квадратного корня из числа второй степени, смещение вправо на два числа то же самое как извлечени корня 4 степени из числа и т. д.</p>
+
+<p>В старые времена в коде часто использовали этот трюк, потому что побитовый сдвиг
+гораздо менее затратно для процессора, чем комплексное умножение и деление арифметика. Поэтому  код выполнялся быстрее, если он использовал сдвиг. Однако с тех самых дней, процессоры стали намного быстрее и компиляторы могут даже преобразовать умножение и деление  в операции сдвига. Таким образом, вы можете никогда не встретить операции сдвига только если вы не станете настоящим системным программистом!</p>
+
+<h4 id="порядок-выполнения-операций">Порядок выполнения операций</h4>
+
+<p>Очень часто необходимо использовать несколько операторов для вычисления значения. Вот пример того, как это можно сделать в Swift:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>((8000 / (5 * 10)) - 32) &gt;&gt; (29 % 5)
+</code></pre></div></div>
+
+<p>Обратите внимание на то, что в примере используются скобки, которые в Swift служат двум целям: сделать яснее и понятнее чтение кода, включая того, кто код пишет и для устранения неоднозначности. Например, рассмотрим следующий пример:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>350 / 5 + 2
+</code></pre></div></div>
+
+<p>Результат будет 72 (350 разделено на 5, плюс 2) или 50 (350 разделено на 7)? Те
+из вас, кто хорошо учился в школе, скажет «72!» И это будет правильно!</p>
+
+<p>Свифт использует те же правила и так называемый приоритет оператора. Оператор деления (<code class="highlighter-rouge">/</code>) имеет более высокий приоритет, чем оператор сложения (<code class="highlighter-rouge">+</code>), поэтому в этом примере код выполняет сначала деление.</p>
+
+<p>Если вы хотите, чтобы Swift сначала выполнил сложение - то есть, вернуть 50 - тогда вы можете использовать круглые скобки:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>350 / (5 + 2)
+</code></pre></div></div>
+
+<p>Правила приоритета сответствуют тем же, что вы учили в школе.
+Умножение и деление имеют одинаковый приоритет, выше, чем сложение и вычитание, которые также имеют равный приоритет.</p>
+
+<h3 id="матматические-функции">Матматические функции</h3>
+
+<p>В Swift также есть широкий спектр математических функций, которые вы можете использовать, когда это необходимо.
+Вы никогда не знаете, когда вам нужно использовать тригонометрию, особенно когда
+вы профессионал-swifter и пишете сложные игры!</p>
+
+<p>Примечание. Не все эти функции являются частью Swift. Некоторые из них предоставляются операционной системой (ОС). Не удаляйте оператор <code class="highlighter-rouge">import</code>, который является частью шаблона playground или Xcode подскажут вам, что они не могут найти эти функции.</p>
+
+<p>Например, рассмотрим следующее:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sin(45 * Double.pi / 180)
+// 0.7071067811865475
+
+cos(135 * Double.pi / 180)
+// -0.7071067811865475
+</code></pre></div></div>
+
+<p>В этом примере вычиляются синус и косинус, соответственно. Заметьте, что оба выражения используют <code class="highlighter-rouge">Double.pi</code> - константу предоставляемую вам Swift, возвращающую значение числа Пи, вычисленное с максимально возможной точностью.</p>
+
+<p>Следующий пример:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(2.0).squareRoot() // Same as sqrt(2)
+// 1.414213562373095
+</code></pre></div></div>
+
+<p>В этом примере вычиляется квадратный корень из 2.</p>
+
+<p>Другая общая операция - найти максимальное из двух переменных. Вы можете использовать ее вот так:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>max(5, 10)
+// 10
+
+min(-5, -10)
+// -10
+</code></pre></div></div>
+
+<p>Они вычисляют максимум и минимум двух чисел соответственно.</p>
+
+<p>Если вы особенно предприимчивы, вы можете даже объединить эти функции, например так:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>max(sqrt(2), Double.pi / 2)
+// 1.570796326794897
+</code></pre></div></div>
+
+<h3 id="именование-данных">Именование данных</h3>
+
+<p>В самом примитивном процессе компьютерного программирования всегда происходит манипуляция данными. Помните, что все, что вы видите на экране, можно свести к номерам, которые вы отправьте в ЦП (центральный процессор). Иногда вы сами создаете и работаете с этими данными как например, с различными типами чисел. В других случаях данные поступают в более сложных формах таких как текст, изображения и коллекции.</p>
+
+<p>Используя язык Swift вы можете назначить каждой части данных имя, котороебудет импользоваться для обращения к нему по мере необходимости. Имя несет в себе ассоциированный тип, который обозначает какие данные относятся к имени, например текст, цифры или дата.</p>
+
+<p>Далее вы узнаете о некоторых основных типах, и познакомитесь с другими типами.</p>
+
+<h4 id="константы">Константы</h4>
+
+<p>Посмотрите на это:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let number: Int = 10
+</code></pre></div></div>
+
+<p>Это объявление константы названой <code class="highlighter-rouge">number</code>, которая имеет тип <code class="highlighter-rouge">Int</code>. Затем этой константе задается значение равное 10.</p>
+
+<blockquote>
+  <p>Заметка: Вспомните об операторах, здесь есть еще один: знак эквивалентности <code class="highlighter-rouge">=</code>, также известен как оператор присвоения.</p>
+</blockquote>
+
+<p>Тип <code class="highlighter-rouge">Int</code> может хранить целые числа. Способ хранения десятичных чисел выглдит также:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let pi: Double = 3.14159
+</code></pre></div></div>
+
+<p>Это похоже на <code class="highlighter-rouge">Int</code> константу, за исключением имени типа. В этот раз константа имет тип <code class="highlighter-rouge">Double</code>, который может хранить десятичные числа высокой точности.</p>
+
+<p>Есть также тип называемый <code class="highlighter-rouge">Float</code>, которые хранятдесятичные числа с точностью ниже, чем <code class="highlighter-rouge">Double</code>. Фактически <code class="highlighter-rouge">Double</code> это тип, который имеет точность в два раза большуу, чем <code class="highlighter-rouge">Float</code>, собственно поэтому <code class="highlighter-rouge">Double</code> так называется. <code class="highlighter-rouge">Float</code>занимает меньше памяти, чем <code class="highlighter-rouge">Double</code>, но в основном память используемая для чисел не занимает много места, поэтому чаще в программировании используется тип <code class="highlighter-rouge">Double</code>.</p>
+
+<p>Однажды объявив константу вы не сможете изменить ее данные. Например, рассмотрим следующий код:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let number: Int = 10
+number = 0
+</code></pre></div></div>
+
+<p>Этот код вызовет ошибку:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>`Cannot assign to value: 'number' is a 'let' constant`
+</code></pre></div></div>
+
+<p>В Xcode вы можете увидеть ошибку 
+In Xcode, you would see the error изображенную на следующем скриншоте:</p>
+
+<p><a href="https://koenig-media.raywenderlich.com/uploads/2018/07/swift-tutorial-part-1-error.png"><img src="https://koenig-media.raywenderlich.com/uploads/2018/07/swift-tutorial-part-1-error-650x52.png" alt="Error" /></a></p>
+
+<p>Константы полезны для значений, которые не меняют свое значение. Например, вы смоделировалисамолет и нужно отслеживать число доступных мест из общего количества мест в самолете.  Для общего числа мест в самолете можно использовать константу.</p>
+
+<p>Вы также можете использовать константы, для чего-то похожего на день рождения человека. Даже, хотя его возраст будет изменяться со временем, дата рождения изменяться не будет никогда.</p>
+
+<h4 id="переменные">Переменные</h4>
+
+<p>Часто необходимо изменить данные присвоенныекакому-либо имени. Например, если у вас сохраняется баланс вышего банковского счета вы предпочтете использовать переменную чем константу.</p>
+
+<p>Если данные программы не меняются, то это была бы довольно скучная программа! Но, как вы видели, невозможно изменить данные констант.</p>
+
+<p>Когда вы знаете, что вам нужно изменить некоторые данные, вы должны использовать переменную вместо константы. Объявление переменной аналогично объявлению константы:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var variableNumber: Int = 42
+</code></pre></div></div>
+
+<p>Только первая часть выражения отличается: для объявления константы используется <code class="highlighter-rouge">let</code>, в то время как для объявления переменной используется <code class="highlighter-rouge">var</code></p>
+
+<p>Объявленная переменная может быть изменена в любой момент, в течении всего времени ее существования в коде. Например,, для изменения значени япеременной, объявленной ранее вы можете сделать следующее:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>variableNumber = 0
+variableNumber = 1_000_000
+</code></pre></div></div>
+
+<p>Для изменения переменой вы просто назначаете ей новое значение.</p>
+
+<blockquote>
+  <p>Заметка: В Swift, вы можете дополнительно использовать знак нижнего дефиса (underscores) чтобы сделать длинные числа более удобными для чтения. Количество и расположение подчеркиваний зависит от вашего желания.</p>
+</blockquote>
+
+<p>Это хорошее время познакомится поближе с боковой панелью результатов в playground. Когда вы набираете на клавиатуре код в playground, вы увидитечто результат в боковой панеле результатов справа показывает текущее значение <code class="highlighter-rouge">variableNumber</code> в каждой строке</p>
+
+<p><a href="https://koenig-media.raywenderlich.com/uploads/2018/07/swift-tutorial-part-1-variables.png"><img src="https://koenig-media.raywenderlich.com/uploads/2018/07/swift-tutorial-part-1-variables-650x43.png" alt="Variables" /></a></p>
+
+<p>Результат в боковом меню результатов будет показывать относительный результат для каждой строкие сли она существует в коде. В случае константы или переменной результат будет иметь новое значение, объявили ли вы только что константу илиобъявили или переприсвоили значение переменной.</p>
+
+<h4 id="использование-толковых-имен">Использование толковых имен</h4>
+
+<p>Всегда пытайтесь выбирать имена для ваших переменных или констант имеющих хоть какой-то смыл, значение. Хорошее название, как хороший комментарий, может сделать ваш код легким для чтения.</p>
+
+<p>Хорошее имя <em>точно</em> описывает что из себя представляет константа или переменная.
+Вот нескольк примеров хороших имен:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">personAge</code></li>
+  <li><code class="highlighter-rouge">numberOfPeople</code></li>
+  <li><code class="highlighter-rouge">gradePointAverage</code></li>
+</ul>
+
+<p>Часто плохое имя это просто имя недостаточно описательное. Вот несколько примеров плохих имен:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">a</code></li>
+  <li><code class="highlighter-rouge">temp</code></li>
+  <li><code class="highlighter-rouge">average</code></li>
+</ul>
+
+<p>Имя должно гарантировать, что вы поймете, к чему относятся переменная или константа, когда вы будете обращатся к ним позже. Не делайте ошибку, думая, что вы имеете феноменальную память! В компьютерном программировании принято оглядываться назад и очень часто даже свой код можно забыть уже через день-два и забыть, что он делает. Сделайте проще для себя, присвоив переменным и константам интуитивно понятные точные названия.</p>
+
+<p>Кроме того, обратите внимание, как написаны имена выше. В Swift, принят так называемы кэмел стиль написания имен. Для переменных и констант должны соблюдаться  следующие правила написания имен:</p>
+
+<ul>
+  <li>начало имени с прописной буквы.</li>
+  <li>если имя состоит из нескольких слов, соедините х вместе, при этом начало каждого последующего слова, за исключением первого должно начинаться с заглавной буквы.</li>
+  <li>Если одно из этих слов является аббревиатурой, напишите всю аббревиатуру в целиком так, как она пишется(например, <code class="highlighter-rouge">sourceURL</code> и <code class="highlighter-rouge">urlDescription</code>).</li>
+</ul>
+
+<p>В Swift можно использовать полный диапазон символов Юникода. Например, можно объявить переменную следующим образом:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var 🐶💩: Int = -1
+</code></pre></div></div>
+
+<p>Это может показаться прикольным, но будьте осторожны с такими специальными символами. Они относятся к сложному типу и, следовательно, могут в конечном итоге причинить вам больше боли, чем развлечения.</p>
+
+<p><a href="https://koenig-media.raywenderlich.com/uploads/2018/07/swift-tutorial-part-1-bad-choice.png"><img src="https://koenig-media.raywenderlich.com/uploads/2018/07/swift-tutorial-part-1-bad-choice.png" alt="Bad choice" /></a></p>
+
+<p>Специальные символы, подобные этим, вероятно, имеют больше смысла в <em>данных</em>, которые вы храните, а не в Swift-коде.</p>
+
+<h3 id="инкремент-и-декремент">Инкремент и декремент</h3>
+
+<p>Обычная операция, которая вам понадобится, чтобы иметь возможность увеличивать или уменьшать переменные. В Swift это достигается следующим образом:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var counter: Int = 0
+
+counter += 1
+// counter = 1
+
+counter -= 1
+// counter = 0
+</code></pre></div></div>
+
+<p>Переменная <code class="highlighter-rouge">counter</code> начинается с <code class="highlighter-rouge">0</code>. Инкремент устанавливает свое значение в <code class="highlighter-rouge">1</code>, и затем декремент устанавливает свое значение обратно в <code class="highlighter-rouge">0</code>.</p>
+
+<p>Эти операторы аналогичны оператору присваивания ( <code class="highlighter-rouge">=</code> ), за исключением того, что онитакже выполняют сложение или вычитание. Они принимают текущее значение
+переменной, добавляют или вычитают данное значение и присваивают результат
+перемпенной.</p>
+
+<p>Другими словами, приведенный выше код является сокращением для следующего:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var counter: Int = 0
+
+counter = counter + 1
+// counter = 1
+
+counter = counter - 1
+// counter = 0
+</code></pre></div></div>
+
+<p>Похожим образом работают операторы <code class="highlighter-rouge">*=</code> (умножения) и <code class="highlighter-rouge">/=</code> (деления), соответственно.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var counter: Int = 10
+
+counter *= 3 // Same as counter = counter * 3
+// counter = 30
+
+counter /= 2 // Same as counter = counter / 2
+// counter = 15
+</code></pre></div></div>
+
+<h3 id="что-дальше">Что дальше?</h3>
+
+<p>Вы можете загрузить <a href="https://koenig-media.raywenderlich.com/uploads/2018/09/Swift-Tutorial-Part-1.zip">финальный файл</a> playground. Там же  вы найдете мини-упражнения для выполнения. Если вы застряли или вам нужна помощь, не стесняйтесь воспользоваться сопутствующими решениями.</p>
+
+<p>В этом уроке вы имели дело только с числами - целыми числами и
+десятичное число. Конечно, dреальном мире есть гораздо больше, чем только числа! В следующем уроке в рамках этой серии вы узнаете о других типах, таких как строки, которые позволяют хранить текст.</p>
+
+  </div>
+
+  <div class="likely">
+    <div class="telegram" data-url="https://losthuman.ru/categories/code/2018/10/06/swift-uchebnik-chast-1-vyrazhenija.html" data-title="Swift: выражения, переменные и константы. Часть 1">Отправить</div>
+    <div class="vkontakte" data-url="https://losthuman.ru/categories/code/2018/10/06/swift-uchebnik-chast-1-vyrazhenija.html" data-title="Swift: выражения, переменные и константы. Часть 1">Поделиться</div>
+    <div class="odnoklassniki" data-url="https://losthuman.ru/categories/code/2018/10/06/swift-uchebnik-chast-1-vyrazhenija.html" data-title="Swift: выражения, переменные и константы. Часть 1">Класснуть</div>
+    <div class="facebook" data-url="https://losthuman.ru/categories/code/2018/10/06/swift-uchebnik-chast-1-vyrazhenija.html" data-title="Swift: выражения, переменные и константы. Часть 1">Поделиться</div>
+    <div class="gplus" data-url="https://losthuman.ru/categories/code/2018/10/06/swift-uchebnik-chast-1-vyrazhenija.html" data-title="Swift: выражения, переменные и константы. Часть 1">Плюсануть</div>
+    <div class="twitter" data-url="https://losthuman.ru/categories/code/2018/10/06/swift-uchebnik-chast-1-vyrazhenija.html" data-title="Swift: выражения, переменные и константы. Часть 1">Твитнуть</div>
+  </div>
+
+  <div class="article-ad">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle"
+         style="display:block; text-align:center;"
+         data-ad-layout="in-article"
+         data-ad-format="fluid"
+         data-ad-client="ca-pub-5706627784425194"
+         data-ad-slot="8358109938"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://losthuman-ru.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a class="u-url" href="/categories/code/2018/10/06/swift-uchebnik-chast-1-vyrazhenija.html" hidden></a>
+</article>
+
+              
+            </div>
+            <div class="col-md-4">
+              
+               <div class="article-ad">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- losthuman-aside -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5706627784425194"
+     data-ad-slot="4814492309"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+               <ul>
+                 <h4>Tags</h4>
+                
+                  <li class="tags"><a href="/tags/iphone">#iphone</a> </li>
+                
+                  <li class="tags"><a href="/tags/apple">#apple</a> </li>
+                
+                  <li class="tags"><a href="/tags/security">#security</a> </li>
+                
+                  <li class="tags"><a href="/tags/hackers">#hackers</a> </li>
+                
+                  <li class="tags"><a href="/tags/google">#google</a> </li>
+                
+                  <li class="tags"><a href="/tags/angular">#angular</a> </li>
+                
+                  <li class="tags"><a href="/tags/programming">#programming</a> </li>
+                
+                  <li class="tags"><a href="/tags/gagets">#gagets</a> </li>
+                
+                  <li class="tags"><a href="/tags/regex">#regex</a> </li>
+                
+                  <li class="tags"><a href="/tags/wordpress">#wordpress</a> </li>
+                
+                  <li class="tags"><a href="/tags/python">#python</a> </li>
+                
+                  <li class="tags"><a href="/tags/twitter">#twitter</a> </li>
+                
+                  <li class="tags"><a href="/tags/shazam">#shazam</a> </li>
+                
+                  <li class="tags"><a href="/tags/application">#application</a> </li>
+                
+                  <li class="tags"><a href="/tags/photo">#photo</a> </li>
+                
+                  <li class="tags"><a href="/tags/css">#css</a> </li>
+                
+                  <li class="tags"><a href="/tags/bittorrent">#bittorrent</a> </li>
+                
+                  <li class="tags"><a href="/tags/amazon">#amazon</a> </li>
+                
+                  <li class="tags"><a href="/tags/swift">#swift</a> </li>
+                
+                  <li class="tags"><a href="/tags/IOS">#IOS</a> </li>
+                
+                  <li class="tags"><a href="/tags/uber">#uber</a> </li>
+                
+                  <li class="tags"><a href="/tags/npm">#npm</a> </li>
+                
+                  <li class="tags"><a href="/tags/nodejs">#nodejs</a> </li>
+                
+                  <li class="tags"><a href="/tags/code">#code</a> </li>
+                
+                  <li class="tags"><a href="/tags/code swift">#code swift</a> </li>
+                
+              </ul>
+              <div class="btcwdgt-chart">
+style="margin-top: 30px">
+    <script>
+      (function(b,i,t,C,O,I,N) {
+        window.addEventListener('load',function() {
+          if(b.getElementById(C))return;
+          I=b.createElement(i),N=b.getElementsByTagName(i)[0];
+          I.src=t;I.id=C;N.parentNode.insertBefore(I, N);
+        },false)
+      })(document,'script','https://widgets.bitcoin.com/widget.js','btcwdgt');
+    </script>
+  </div>
+            </div>
+          </div>
+        </div>
+              <div class="article-ad">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle"
+         style="display:block; text-align:center;"
+         data-ad-layout="in-article"
+         data-ad-format="fluid"
+         data-ad-client="ca-pub-5706627784425194"
+         data-ad-slot="8358109938"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+              
+    </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Losthuman</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Losthuman</li><li><a class="u-email" href="mailto:info@losthuman.ru">info@losthuman.ru</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://twitter.com/losthuman9"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">losthuman9</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Ничего особо ценного</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+<script src="/assets/likely.js"></script>
+  </body>
+
+</html>
