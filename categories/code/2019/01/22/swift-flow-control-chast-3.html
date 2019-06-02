@@ -1,408 +1,36 @@
-<!DOCTYPE html>
-<html lang="ru_RU"><head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta property="og:image" content="/assets/images/2019-01-22-Swift-Flow-Control-Chast-3/top_image.jpg" /><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Swift управление потоками Часть 3 | Losthuman</title>
-<meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="Swift управление потоками Часть 3" />
-<meta property="og:locale" content="ru_RU" />
-<meta name="description" content="Приветствуем вас в третьей части нашей мини-серии по Swift, в которой вы узнаете как использовать булевые пеерменные и управлять потоками. Данный материал является переводом tutorial с сайта raywenderlich.com." />
-<meta property="og:description" content="Приветствуем вас в третьей части нашей мини-серии по Swift, в которой вы узнаете как использовать булевые пеерменные и управлять потоками. Данный материал является переводом tutorial с сайта raywenderlich.com." />
-<link rel="canonical" href="https://losthuman.ru/categories/code/2019/01/22/swift-flow-control-chast-3.html" />
-<meta property="og:url" content="https://losthuman.ru/categories/code/2019/01/22/swift-flow-control-chast-3.html" />
-<meta property="og:site_name" content="Losthuman" />
-<meta property="og:type" content="article" />
-<meta property="article:published_time" content="2019-01-22T00:00:00+05:00" />
-<script type="application/ld+json">
-{"datePublished":"2019-01-22T00:00:00+05:00","headline":"Swift управление потоками Часть 3","mainEntityOfPage":{"@type":"WebPage","@id":"https://losthuman.ru/categories/code/2019/01/22/swift-flow-control-chast-3.html"},"url":"https://losthuman.ru/categories/code/2019/01/22/swift-flow-control-chast-3.html","description":"Приветствуем вас в третьей части нашей мини-серии по Swift, в которой вы узнаете как использовать булевые пеерменные и управлять потоками. Данный материал является переводом tutorial с сайта raywenderlich.com.","@type":"BlogPosting","dateModified":"2019-01-22T00:00:00+05:00","@context":"https://schema.org"}</script>
-<!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/assets/main.css">
-  
-  <link rel="stylesheet" href="/assets/likely.css"><link type="application/atom+xml" rel="alternate" href="https://losthuman.ru/feed.xml" title="Losthuman" /><!-- Put this script tag to the <head> of your page -->
-    <script type="text/javascript" src="https://vk.com/js/api/openapi.js?160"></script><script>
-if(!(window.doNotTrack === "1" || navigator.doNotTrack === "1" || navigator.doNotTrack === "yes" || navigator.msDoNotTrack === "1")) {
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-116379514-1', 'auto');
-  ga('send', 'pageview');
-}
-</script>
-  
-</head>
-<body><header class="site-header" role="banner">
-
-  <div class="wrapper">
-
-    <a class="site-title" rel="author" href="/">Losthuman</a>
-
-    
-      <nav class="site-nav site-nav-custom">
-        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
-        <label for="nav-trigger">
-          <span class="menu-icon">
-            <svg viewBox="0 0 18 15" width="18px" height="15px">
-              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
-            </svg>
-          </span>
-        </label>
-
-        <div class="trigger">
-          
-          
-          
-        
-          
-          
-          <a class="page-link" href="/about/">О проекте</a>
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-          <a class="page-link" href="/categories/technews/index.html">Technews</a>
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-          <a class="page-link" href="/categories/code/index.html">Code</a>
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-          <a class="page-link" href="/categories/library/index.html">Library</a>
-          
-        
-        </div>
-      </nav>
-   
-  </div>
-</header>
-<main class="page-content" aria-label="Content">
-      <div class="wrapper">
-
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-format="fluid"
-     data-ad-layout-key="-fg+4w-s-a4+kz"
-     data-ad-client="ca-pub-5706627784425194"
-     data-ad-slot="4102621418"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
-
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-8">
-              
-              <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
-
-  <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Swift управление потоками Часть 3</h1>
-    <p class="post-meta">
-      <time class="dt-published" datetime="2019-01-22T00:00:00+05:00" itemprop="datePublished">Jan 22, 2019
-      </time></p>
-  </header>
-  
-  <div class="post">               
-      <div class="post-image">
-          <img src="/assets/images/2019-01-22-Swift-Flow-Control-Chast-3/top_image.jpg" alt="Картинка" >
-      </div>
-  </div>
-  
-  
-  <div class="post-content e-content" itemprop="articleBody">
-    <p>Приветствуем вас в третьей части нашей мини-серии по Swift, в которой вы узнаете как использовать булевые пеерменные и управлять потоками. Данный материал является переводом <a href="https://www.raywenderlich.com/6366-swift-tutorial-part-3-flow-control">tutorial</a> с сайта <a href="https://www.raywenderlich.com">raywenderlich.com</a>.</p>
-
-<p>Это будет финальная часть мини-серии. Первые две части можно найти на нашем сайте: <a href="https://losthuman.ru/categories/code/2018/10/07/swift-tipy-i-operatsii-chast-2.html">Часть 1: Swift: выражения,переменные и константы.</a> или <a href="https://losthuman.ru/categories/code/2018/10/06/swift-uchebnik-chast-1-vyrazhenija.html">Часть 2: Swift: Типы и операции</a></p>
-
-<p>В терминологии компьютерного программирования возможность сказать компьютеру что делать в различных ситуациях называется управление потоками (control flow).</p>
-
-<p>В этой части мини-серии вы узнаете как принимать решения и повторять задачи в ваших программах используя синтаксис управления потоками. Вы также узнаете о булевых переменных, которые оперируют всего двумя значениями <code class="highlighter-rouge">true</code> и <code class="highlighter-rouge">false</code>, а также как можно с их помощью сравнивать данные.</p>
-
-<h2 id="с-чего-начать">С чего начать</h2>
-
-<p>К этому моменту вы уже должны понимать что из себя представляют некоторые типы данных, например такие, как <code class="highlighter-rouge">Int</code>, <code class="highlighter-rouge">Double</code> и <code class="highlighter-rouge">String</code>. Сейчас вы познакомитесь с другим типом данных, который позволит вам сравнивать значения применяя операторы сравнения.</p>
-
-<p>Когда выполняется сравнение, например поиск большего из двух чисел, ответ представляет собой либо <em>правда</em> , либо <em>ложь</em>. Swift имеет тип данных специально предназначенный для таких целей. Он называется <code class="highlighter-rouge">Bool</code>, что является сокращением от слова Boolean. Само понятие булевого числа было введено в математику Джорджем Булем, предложившим концепцию  <code class="highlighter-rouge">true</code> или <code class="highlighter-rouge">false</code>.</p>
-
-<p>Вот как используются Boolean в Swift:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let yes = true // Подразуемвается что это тип Bool
+<!DOCTYPE html> <html lang="ru_RU"><head> <meta charset="utf-8"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=device-width, initial-scale=1"> <meta property="og:image" content="/assets/images/2019-01-22-Swift-Flow-Control-Chast-3/top_image.jpg" /><!-- Begin Jekyll SEO tag v2.6.1 --> <title>Swift управление потоками Часть 3 | Losthuman</title> <meta name="generator" content="Jekyll v3.8.5" /> <meta property="og:title" content="Swift управление потоками Часть 3" /> <meta property="og:locale" content="ru_RU" /> <meta name="description" content="Приветствуем вас в третьей части нашей мини-серии по Swift, в которой вы узнаете как использовать булевые пеерменные и управлять потоками. Данный материал является переводом tutorial с сайта raywenderlich.com." /> <meta property="og:description" content="Приветствуем вас в третьей части нашей мини-серии по Swift, в которой вы узнаете как использовать булевые пеерменные и управлять потоками. Данный материал является переводом tutorial с сайта raywenderlich.com." /> <link rel="canonical" href="http://localhost:4000/categories/code/2019/01/22/swift-flow-control-chast-3.html" /> <meta property="og:url" content="http://localhost:4000/categories/code/2019/01/22/swift-flow-control-chast-3.html" /> <meta property="og:site_name" content="Losthuman" /> <meta property="og:type" content="article" /> <meta property="article:published_time" content="2019-01-22T00:00:00+05:00" /> <script type="application/ld+json"> {"datePublished":"2019-01-22T00:00:00+05:00","headline":"Swift управление потоками Часть 3","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/categories/code/2019/01/22/swift-flow-control-chast-3.html"},"url":"http://localhost:4000/categories/code/2019/01/22/swift-flow-control-chast-3.html","description":"Приветствуем вас в третьей части нашей мини-серии по Swift, в которой вы узнаете как использовать булевые пеерменные и управлять потоками. Данный материал является переводом tutorial с сайта raywenderlich.com.","@type":"BlogPosting","dateModified":"2019-01-22T00:00:00+05:00","@context":"https://schema.org"}</script> <!-- End Jekyll SEO tag --> <link rel="stylesheet" href="/assets/main.css"> <link rel="stylesheet" href="/assets/likely.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Losthuman" /><!-- Put this script tag to the <head> of your page --> <script type="text/javascript" src="https://vk.com/js/api/openapi.js?160"></script></head> <body><header class="site-header" role="banner"> <div class="wrapper"> <a class="site-title" rel="author" href="/">Losthuman</a> <nav class="site-nav site-nav-custom"> <input type="checkbox" id="nav-trigger" class="nav-trigger" /> <label for="nav-trigger"> <span class="menu-icon"> <svg viewBox="0 0 18 15" width="18px" height="15px"> <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/> </svg> </span> </label> <div class="trigger"> <a class="page-link" href="/about/">О проекте</a> <a class="page-link" href="/categories/technews/index.html">Technews</a> <a class="page-link" href="/categories/code/index.html">Code</a> <a class="page-link" href="/categories/library/index.html">Library</a> </div> </nav> </div> </header> <main class="page-content" aria-label="Content"> <div class="wrapper"> <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> <ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-fg+4w-s-a4+kz" data-ad-client="ca-pub-5706627784425194" data-ad-slot="4102621418"></ins> <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script> <div class="container-fluid"> <div class="row"> <div class="col-md-8"> <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting"> <header class="post-header"> <h1 class="post-title p-name" itemprop="name headline">Swift управление потоками Часть 3</h1> <p class="post-meta"> <time class="dt-published" datetime="2019-01-22T00:00:00+05:00" itemprop="datePublished">Jan 22, 2019 </time></p> </header> <div class="post"> <div class="post-image"> <img src="/assets/images/2019-01-22-Swift-Flow-Control-Chast-3/top_image.jpg" alt="Картинка" > </div> </div> <div class="post-content e-content" itemprop="articleBody"> <p>Приветствуем вас в третьей части нашей мини-серии по Swift, в которой вы узнаете как использовать булевые пеерменные и управлять потоками. Данный материал является переводом <a href="https://www.raywenderlich.com/6366-swift-tutorial-part-3-flow-control">tutorial</a> с сайта <a href="https://www.raywenderlich.com">raywenderlich.com</a>.</p> <p>Это будет финальная часть мини-серии. Первые две части можно найти на нашем сайте: <a href="https://losthuman.ru/categories/code/2018/10/07/swift-tipy-i-operatsii-chast-2.html">Часть 1: Swift: выражения,переменные и константы.</a> или <a href="https://losthuman.ru/categories/code/2018/10/06/swift-uchebnik-chast-1-vyrazhenija.html">Часть 2: Swift: Типы и операции</a></p> <p>В терминологии компьютерного программирования возможность сказать компьютеру что делать в различных ситуациях называется управление потоками (control flow).</p> <p>В этой части мини-серии вы узнаете как принимать решения и повторять задачи в ваших программах используя синтаксис управления потоками. Вы также узнаете о булевых переменных, которые оперируют всего двумя значениями <code class="highlighter-rouge">true</code> и <code class="highlighter-rouge">false</code>, а также как можно с их помощью сравнивать данные.</p> <h2 id="с-чего-начать">С чего начать</h2> <p>К этому моменту вы уже должны понимать что из себя представляют некоторые типы данных, например такие, как <code class="highlighter-rouge">Int</code>, <code class="highlighter-rouge">Double</code> и <code class="highlighter-rouge">String</code>. Сейчас вы познакомитесь с другим типом данных, который позволит вам сравнивать значения применяя операторы сравнения.</p> <p>Когда выполняется сравнение, например поиск большего из двух чисел, ответ представляет собой либо <em>правда</em> , либо <em>ложь</em>. Swift имеет тип данных специально предназначенный для таких целей. Он называется <code class="highlighter-rouge">Bool</code>, что является сокращением от слова Boolean. Само понятие булевого числа было введено в математику Джорджем Булем, предложившим концепцию <code class="highlighter-rouge">true</code> или <code class="highlighter-rouge">false</code>.</p> <p>Вот как используются Boolean в Swift:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let yes = true // Подразуемвается что это тип Bool
 let no = false // Подразуемвается что это тип Bool
-</code></pre></div></div>
-
-<p>Вообще говоря, булевая пеерменная может иметь только два значения: <code class="highlighter-rouge">правда</code> или <code class="highlighter-rouge">ложь</code>, которые обозначаются ключевыми словами <code class="highlighter-rouge">true</code> или <code class="highlighter-rouge">false</code>, соответственно. В примере выше использовались эти ключевые слова для присвоения значения константам.</p>
-
-<h3 id="булевые-операторы">Булевые операторы</h3>
-
-<p>Булевый тип данных в основном используется для сравнения значений. Например, у вас есть два значения и вы хотите знать равны ли они между собой: либо эти значения равны (true), либо они различны (false).</p>
-
-<p>В Swift вы можете выполнить это используя оператор равенства, который обозначается <code class="highlighter-rouge">==</code>:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let doesOneEqualTwo = (1 == 2)
-</code></pre></div></div>
-
-<p>Swift подразумевает, что <code class="highlighter-rouge">doesOneEqualTwo</code> это тип <code class="highlighter-rouge">Bool</code>. Совершенно очевидно, что 1 не равно 2 и поэтому,<code class="highlighter-rouge">doesOneEqualTwo</code> будет присвоено значение <code class="highlighter-rouge">false</code></p>
-
-<p>Аналогично, если два числа <em>не</em> равны можно использовать оператор <code class="highlighter-rouge">!=</code>:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let doesOneNotEqualTwo = (1 != 2)
-</code></pre></div></div>
-
-<p>В этом случае сравнение будет <code class="highlighter-rouge">true</code>, так как 1 не равно 2, поэтому <code class="highlighter-rouge">doesOneNotEqualTwo</code> будет присвоено значение <code class="highlighter-rouge">true</code></p>
-
-<p>Префикс оператора <code class="highlighter-rouge">!</code> также называемый оператор отрицания, переключает <code class="highlighter-rouge">true</code> на <code class="highlighter-rouge">false</code>, а <code class="highlighter-rouge">false</code> на <code class="highlighter-rouge">true</code>. То же самое можно записать иначе:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let alsoTrue = !(1 == 2)
-</code></pre></div></div>
-
-<p>Рассмотрим это выражение шаг за шагом: 1 не равно 2, поэтому (1 == 2) это <code class="highlighter-rouge">false</code> и тогда <code class="highlighter-rouge">!</code> переключает <code class="highlighter-rouge">false</code> на <code class="highlighter-rouge">true</code>.</p>
-
-<p>Еще два оператора позволят вам определить если число больше чем (<code class="highlighter-rouge">&gt;</code>) или меньше чем (<code class="highlighter-rouge">&lt;</code>) другое число. Совершенно точно, что вы знакомы с этими оперторами из школьного курса математики.</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let isOneGreaterThanTwo = (1 &gt; 2)
+</code></pre></div></div> <p>Вообще говоря, булевая пеерменная может иметь только два значения: <code class="highlighter-rouge">правда</code> или <code class="highlighter-rouge">ложь</code>, которые обозначаются ключевыми словами <code class="highlighter-rouge">true</code> или <code class="highlighter-rouge">false</code>, соответственно. В примере выше использовались эти ключевые слова для присвоения значения константам.</p> <h3 id="булевые-операторы">Булевые операторы</h3> <p>Булевый тип данных в основном используется для сравнения значений. Например, у вас есть два значения и вы хотите знать равны ли они между собой: либо эти значения равны (true), либо они различны (false).</p> <p>В Swift вы можете выполнить это используя оператор равенства, который обозначается <code class="highlighter-rouge">==</code>:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let doesOneEqualTwo = (1 == 2)
+</code></pre></div></div> <p>Swift подразумевает, что <code class="highlighter-rouge">doesOneEqualTwo</code> это тип <code class="highlighter-rouge">Bool</code>. Совершенно очевидно, что 1 не равно 2 и поэтому,<code class="highlighter-rouge">doesOneEqualTwo</code> будет присвоено значение <code class="highlighter-rouge">false</code></p> <p>Аналогично, если два числа <em>не</em> равны можно использовать оператор <code class="highlighter-rouge">!=</code>:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let doesOneNotEqualTwo = (1 != 2)
+</code></pre></div></div> <p>В этом случае сравнение будет <code class="highlighter-rouge">true</code>, так как 1 не равно 2, поэтому <code class="highlighter-rouge">doesOneNotEqualTwo</code> будет присвоено значение <code class="highlighter-rouge">true</code></p> <p>Префикс оператора <code class="highlighter-rouge">!</code> также называемый оператор отрицания, переключает <code class="highlighter-rouge">true</code> на <code class="highlighter-rouge">false</code>, а <code class="highlighter-rouge">false</code> на <code class="highlighter-rouge">true</code>. То же самое можно записать иначе:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let alsoTrue = !(1 == 2)
+</code></pre></div></div> <p>Рассмотрим это выражение шаг за шагом: 1 не равно 2, поэтому (1 == 2) это <code class="highlighter-rouge">false</code> и тогда <code class="highlighter-rouge">!</code> переключает <code class="highlighter-rouge">false</code> на <code class="highlighter-rouge">true</code>.</p> <p>Еще два оператора позволят вам определить если число больше чем (<code class="highlighter-rouge">&gt;</code>) или меньше чем (<code class="highlighter-rouge">&lt;</code>) другое число. Совершенно точно, что вы знакомы с этими оперторами из школьного курса математики.</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let isOneGreaterThanTwo = (1 &gt; 2)
 let isOneLessThanTwo = (1 &lt; 2)
-</code></pre></div></div>
-
-<p>Это не наука о космических ракетах, поэтому каждому будет понятно, что константа <code class="highlighter-rouge">isOneGreaterThanTwo</code> будет равна <code class="highlighter-rouge">false</code>, а константа <code class="highlighter-rouge">isOneLessThanTwo</code> будет равна<code class="highlighter-rouge">true</code>.</p>
-
-<p>Есть еще оператор, который позволяет проверять если значение меньше <em>или</em> равно другому значению: <code class="highlighter-rouge">&lt;=</code>. Это комбинация <code class="highlighter-rouge">&lt;</code> и <code class="highlighter-rouge">==</code>, и поэтому она возвращает <code class="highlighter-rouge">true</code> если первое значение либо меньеше, чем второе значение, либо равно ему.</p>
-
-<p>Аналогично работает оператор <code class="highlighter-rouge">&gt;=</code>, которые позволяет выполнить проверку является ли значение больше или меньше другого.</p>
-
-<h3 id="булевая-логика">Булевая логика</h3>
-
-<p>Примеры выше проверяют выполнение только одного условия. Для того, чтобы получить результат проверки выполнения нескольких объединенных условий следует применить булеву логику.</p>
-
-<p>Одним из способов объединения условий является использование оператора AND. Когда вы используете AND вместе с булевыми значениями, результатом будет другое булевое значение. Если оба входящих булевых значения <code class="highlighter-rouge">true</code>, тогда результатом будет другое булевое значение <code class="highlighter-rouge">true</code>. В противном случае результатом будет <code class="highlighter-rouge">false</code>.</p>
-
-<p><img src="https://koenig-media.raywenderlich.com/uploads/2016/09/george_boole-650x480.png" alt="george_boole" /></p>
-
-<p>В Swift булевый оператор AND обозначается как <code class="highlighter-rouge">&amp;&amp;</code>:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let and = true &amp;&amp; true
-</code></pre></div></div>
-
-<p>В этом случае <code class="highlighter-rouge">and</code> будет присвоено значение <code class="highlighter-rouge">true</code>. Если бы любое значение справа было <code class="highlighter-rouge">false</code>,тогда <code class="highlighter-rouge">and</code> было бы присвоено значение <code class="highlighter-rouge">false</code>.</p>
-
-<p>Другой способ объединения условий это использование оператора OR. Когда вы используете  OR вместе с двумя булевыми значениями, результат будет <code class="highlighter-rouge">true</code>, если <em>один</em> из входящих булевых значений является <code class="highlighter-rouge">true</code>. Только если <em>оба</em> входящих значения являются <code class="highlighter-rouge">false</code>, результат будее тоже <code class="highlighter-rouge">false</code>.</p>
-
-<p>В Swift булевый оператор OR обозначается как <code class="highlighter-rouge">||</code>:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let or = true || false
-</code></pre></div></div>
-
-<p>В этом случае <code class="highlighter-rouge">or</code> будет <code class="highlighter-rouge">true</code>. Если оба значения справа были  <code class="highlighter-rouge">false</code>, тогда значение<code class="highlighter-rouge">or</code> было бы <code class="highlighter-rouge">false</code>. Если бы оба значения были <code class="highlighter-rouge">true</code>, тогда значение <code class="highlighter-rouge">or</code> стало бы<code class="highlighter-rouge">true</code>.</p>
-
-<p>В Swift булевая логика обычно применяется к нескольким условиям. Например:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let andTrue = 1 &lt; 2 &amp;&amp; 4 &gt; 3
+</code></pre></div></div> <p>Это не наука о космических ракетах, поэтому каждому будет понятно, что константа <code class="highlighter-rouge">isOneGreaterThanTwo</code> будет равна <code class="highlighter-rouge">false</code>, а константа <code class="highlighter-rouge">isOneLessThanTwo</code> будет равна<code class="highlighter-rouge">true</code>.</p> <p>Есть еще оператор, который позволяет проверять если значение меньше <em>или</em> равно другому значению: <code class="highlighter-rouge">&lt;=</code>. Это комбинация <code class="highlighter-rouge">&lt;</code> и <code class="highlighter-rouge">==</code>, и поэтому она возвращает <code class="highlighter-rouge">true</code> если первое значение либо меньеше, чем второе значение, либо равно ему.</p> <p>Аналогично работает оператор <code class="highlighter-rouge">&gt;=</code>, которые позволяет выполнить проверку является ли значение больше или меньше другого.</p> <h3 id="булевая-логика">Булевая логика</h3> <p>Примеры выше проверяют выполнение только одного условия. Для того, чтобы получить результат проверки выполнения нескольких объединенных условий следует применить булеву логику.</p> <p>Одним из способов объединения условий является использование оператора AND. Когда вы используете AND вместе с булевыми значениями, результатом будет другое булевое значение. Если оба входящих булевых значения <code class="highlighter-rouge">true</code>, тогда результатом будет другое булевое значение <code class="highlighter-rouge">true</code>. В противном случае результатом будет <code class="highlighter-rouge">false</code>.</p> <p><img src="https://koenig-media.raywenderlich.com/uploads/2016/09/george_boole-650x480.png" alt="george_boole" /></p> <p>В Swift булевый оператор AND обозначается как <code class="highlighter-rouge">&amp;&amp;</code>:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let and = true &amp;&amp; true
+</code></pre></div></div> <p>В этом случае <code class="highlighter-rouge">and</code> будет присвоено значение <code class="highlighter-rouge">true</code>. Если бы любое значение справа было <code class="highlighter-rouge">false</code>,тогда <code class="highlighter-rouge">and</code> было бы присвоено значение <code class="highlighter-rouge">false</code>.</p> <p>Другой способ объединения условий это использование оператора OR. Когда вы используете OR вместе с двумя булевыми значениями, результат будет <code class="highlighter-rouge">true</code>, если <em>один</em> из входящих булевых значений является <code class="highlighter-rouge">true</code>. Только если <em>оба</em> входящих значения являются <code class="highlighter-rouge">false</code>, результат будее тоже <code class="highlighter-rouge">false</code>.</p> <p>В Swift булевый оператор OR обозначается как <code class="highlighter-rouge">||</code>:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let or = true || false
+</code></pre></div></div> <p>В этом случае <code class="highlighter-rouge">or</code> будет <code class="highlighter-rouge">true</code>. Если оба значения справа были <code class="highlighter-rouge">false</code>, тогда значение<code class="highlighter-rouge">or</code> было бы <code class="highlighter-rouge">false</code>. Если бы оба значения были <code class="highlighter-rouge">true</code>, тогда значение <code class="highlighter-rouge">or</code> стало бы<code class="highlighter-rouge">true</code>.</p> <p>В Swift булевая логика обычно применяется к нескольким условиям. Например:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let andTrue = 1 &lt; 2 &amp;&amp; 4 &gt; 3
 let andFalse = 1 &lt; 2 &amp;&amp; 3 &gt; 4
 
 let orTrue = 1 &lt; 2 || 3 &gt; 4
 let orFalse = 1 == 2 || 3 == 4
-</code></pre></div></div>
-
-<p>Каждая из этих проверок предусматривает два различных условия, объединенных либо оператором  AND, либо оператором OR.</p>
-
-<p>Также допускается использовать булевую логику для объединения более чем двух условий. Например вы можете формировать сравнения так:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let andOr = (1 &lt; 2 &amp;&amp; 3 &gt; 4) || 1 &lt; 4
-</code></pre></div></div>
-
-<p>Когда вы заключаете скобками часть выражения, вы определяете порядок его выполнения. Вначале, Swift выполнит выражение внутри скобок, а затем выполнит все выражение целиком:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. (1 &lt; 2 &amp;&amp; 3 &gt; 4) || 1 &lt; 4
+</code></pre></div></div> <p>Каждая из этих проверок предусматривает два различных условия, объединенных либо оператором AND, либо оператором OR.</p> <p>Также допускается использовать булевую логику для объединения более чем двух условий. Например вы можете формировать сравнения так:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let andOr = (1 &lt; 2 &amp;&amp; 3 &gt; 4) || 1 &lt; 4
+</code></pre></div></div> <p>Когда вы заключаете скобками часть выражения, вы определяете порядок его выполнения. Вначале, Swift выполнит выражение внутри скобок, а затем выполнит все выражение целиком:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. (1 &lt; 2 &amp;&amp; 3 &gt; 4) || 1 &lt; 4
 2. (true &amp;&amp; false) || true
 3. false || true
 4. true
-</code></pre></div></div>
-
-<h3 id="равенство-строк">Равенство строк</h3>
-
-<p>Иногда вы хотите определит равны ли две строки друг другу. Например, задачей в детской игре может быть правильное определение названий животных, изображенных на фотографиях.</p>
-
-<p>В Swift вы можете сравнивать строки используя стандартный оператор равенства <code class="highlighter-rouge">==</code>, точно таким же способом каким мы ранее сравнивали числа. Например:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let guess = "dog"
+</code></pre></div></div> <h3 id="равенство-строк">Равенство строк</h3> <p>Иногда вы хотите определит равны ли две строки друг другу. Например, задачей в детской игре может быть правильное определение названий животных, изображенных на фотографиях.</p> <p>В Swift вы можете сравнивать строки используя стандартный оператор равенства <code class="highlighter-rouge">==</code>, точно таким же способом каким мы ранее сравнивали числа. Например:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let guess = "dog"
 let dogEqualsCat = guess == "cat"
-</code></pre></div></div>
-
-<p><code class="highlighter-rouge">dogEqualsCat</code> имеет булевое значение, которое в данном случае равно <code class="highlighter-rouge">false</code>, потому, что слово <code class="highlighter-rouge">"dog"</code> не равно слову <code class="highlighter-rouge">"cat"</code>.</p>
-
-<p>Точно так же как и с числами, вы можете сравнивать не только равны ли строки, но также определять больше одна из строк или меньше, чем другая. Например:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let order = "cat" &lt; "dog"
-</code></pre></div></div>
-
-<p>Такой сиснтаксис проверит если одна из строк находится ранее другой в алфавитном порядке. В этом случае значение <code class="highlighter-rouge">order</code> равно <code class="highlighter-rouge">true</code> потому, что  <code class="highlighter-rouge">"cat"</code> по алфавиту находится до <code class="highlighter-rouge">"dog"</code>.</p>
-
-<h2 id="условный-оператор-if">Условный оператор if</h2>
-
-<p>Первый и самый общий способ контроля потока в программе это использование условного оператора <code class="highlighter-rouge">if</code> (или выражения <code class="highlighter-rouge">if</code>), который позволяет программе делать что-то только <em>если</em> выполняется определенное условие как <code class="highlighter-rouge">true</code>. Например, рассмотрим следующий пример:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if 2 &gt; 1 {
+</code></pre></div></div> <p><code class="highlighter-rouge">dogEqualsCat</code> имеет булевое значение, которое в данном случае равно <code class="highlighter-rouge">false</code>, потому, что слово <code class="highlighter-rouge">"dog"</code> не равно слову <code class="highlighter-rouge">"cat"</code>.</p> <p>Точно так же как и с числами, вы можете сравнивать не только равны ли строки, но также определять больше одна из строк или меньше, чем другая. Например:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let order = "cat" &lt; "dog"
+</code></pre></div></div> <p>Такой сиснтаксис проверит если одна из строк находится ранее другой в алфавитном порядке. В этом случае значение <code class="highlighter-rouge">order</code> равно <code class="highlighter-rouge">true</code> потому, что <code class="highlighter-rouge">"cat"</code> по алфавиту находится до <code class="highlighter-rouge">"dog"</code>.</p> <h2 id="условный-оператор-if">Условный оператор if</h2> <p>Первый и самый общий способ контроля потока в программе это использование условного оператора <code class="highlighter-rouge">if</code> (или выражения <code class="highlighter-rouge">if</code>), который позволяет программе делать что-то только <em>если</em> выполняется определенное условие как <code class="highlighter-rouge">true</code>. Например, рассмотрим следующий пример:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if 2 &gt; 1 {
   print("Yes, 2 is greater than 1.")
 }
-</code></pre></div></div>
-
-<p>Это самый  простой пример использования оператора <code class="highlighter-rouge">if</code>. Если условие выполняется как <code class="highlighter-rouge">true</code>, тогда оператор будет выполнять код между фигурными скобками. Если условие выполняется как <code class="highlighter-rouge">false</code>, тогда оператор не будет выполнять код между фигурными скобками.</p>
-
-<p>Вы можете изменить оператор <code class="highlighter-rouge">if</code> включив в него возможность выполнения кода, если условие ыполняется как <code class="highlighter-rouge">false</code>. Для этого используется оператор <code class="highlighter-rouge">else</code>. Например:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let animal = "Fox"
+</code></pre></div></div> <p>Это самый простой пример использования оператора <code class="highlighter-rouge">if</code>. Если условие выполняется как <code class="highlighter-rouge">true</code>, тогда оператор будет выполнять код между фигурными скобками. Если условие выполняется как <code class="highlighter-rouge">false</code>, тогда оператор не будет выполнять код между фигурными скобками.</p> <p>Вы можете изменить оператор <code class="highlighter-rouge">if</code> включив в него возможность выполнения кода, если условие ыполняется как <code class="highlighter-rouge">false</code>. Для этого используется оператор <code class="highlighter-rouge">else</code>. Например:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let animal = "Fox"
 if animal == "Cat" || animal == "Dog" {
   print("Animal is a house pet.")
 } else {
   print("Animal is not a house pet.")
 }
-</code></pre></div></div>
-
-<p>В данном случае если значение <code class="highlighter-rouge">animal</code> равно либо <code class="highlighter-rouge">"Cat"</code> либо <code class="highlighter-rouge">"Dog"</code>, тогда оператор выполнит первый блок кодв. Если  значение<code class="highlighter-rouge">animal</code> не равно <code class="highlighter-rouge">"Cat"</code> или <code class="highlighter-rouge">"Dog"</code>, тогда оператор выполнит блок кода, заключенный внутри <code class="highlighter-rouge">else</code>, напечатав следующее в дебаггере:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Animal is not a house pet.
-</code></pre></div></div>
-
-<p>Но, с условным оператором <code class="highlighter-rouge">if</code> вы можете еще больше, чем в предыдущем примере. Иногда вы хотите проверить одно условие, на соответстиве нескольким. Для этого используется оператор <code class="highlighter-rouge">else-if</code>, с помощью которого можно вложить еще один оператор <code class="highlighter-rouge">if</code> в оператор <code class="highlighter-rouge">else</code>, относящийся к предыдущему условному оператору <code class="highlighter-rouge">if</code>.</p>
-
-<p>Например, можно записать код так:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let hourOfDay = 12
+</code></pre></div></div> <p>В данном случае если значение <code class="highlighter-rouge">animal</code> равно либо <code class="highlighter-rouge">"Cat"</code> либо <code class="highlighter-rouge">"Dog"</code>, тогда оператор выполнит первый блок кодв. Если значение<code class="highlighter-rouge">animal</code> не равно <code class="highlighter-rouge">"Cat"</code> или <code class="highlighter-rouge">"Dog"</code>, тогда оператор выполнит блок кода, заключенный внутри <code class="highlighter-rouge">else</code>, напечатав следующее в дебаггере:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Animal is not a house pet.
+</code></pre></div></div> <p>Но, с условным оператором <code class="highlighter-rouge">if</code> вы можете еще больше, чем в предыдущем примере. Иногда вы хотите проверить одно условие, на соответстиве нескольким. Для этого используется оператор <code class="highlighter-rouge">else-if</code>, с помощью которого можно вложить еще один оператор <code class="highlighter-rouge">if</code> в оператор <code class="highlighter-rouge">else</code>, относящийся к предыдущему условному оператору <code class="highlighter-rouge">if</code>.</p> <p>Например, можно записать код так:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let hourOfDay = 12
 var timeOfDay = ""
 
 if hourOfDay &lt; 6 {
@@ -419,32 +47,8 @@ if hourOfDay &lt; 6 {
   timeOfDay = "INVALID HOUR!"
 }
 print(timeOfDay)
-</code></pre></div></div>
-
-<p>В данном случае вложенные операторы <code class="highlighter-rouge">if</code> проверяют условия одно за другим, пока одно из них не выполнится как <code class="highlighter-rouge">true</code>. Только код, связанный с этим условием будет выполнен, независимо от того могут ли последующие условия <code class="highlighter-rouge">else-if</code>выполниться как <code class="highlighter-rouge">true</code>. Иными словам порядок проверки условий имеет значение!</p>
-
-<p>Вы можете добавить условный оператор <code class="highlighter-rouge">else</code>в конец для обработки случая, когда ни одно из условий не выполняется как <code class="highlighter-rouge">true</code>. В таком случае использование <code class="highlighter-rouge">else</code> является опциональным, если вы не нуждаетесь в нем. В использованном примере необходимо, чтобы переменная <code class="highlighter-rouge">timeOfDay</code> имела валидное значение времени, когда вы будете распечатывать его значение.</p>
-
-<p>В этом прмиере условный оператор <code class="highlighter-rouge">if</code> получает время, выраженное в часах (числах) и конвертирует его в строку, представляющую описание времени дня, к которому  это время относится. Работая с 24-х часовым форматом времени условный оператор проверяет последовательно одно услвоие за другим.</p>
-
-<p>В коде выше  переменная <code class="highlighter-rouge">hourOfDay</code> имеет значение <code class="highlighter-rouge">12</code>. Поэтому, код будет печатать следующее сообщение:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Afternoon
-</code></pre></div></div>
-
-<p>Обратите внимание, что, хотя еще два условия <code class="highlighter-rouge">hourOfDay &lt; 20</code> и <code class="highlighter-rouge">hourOfDay &lt; 24</code> также выполняются как <code class="highlighter-rouge">true</code>, условный оператор выполнит только первый блок, чье условие соответствут <code class="highlighter-rouge">true</code>. В этом случае, выполнится блок с условием <code class="highlighter-rouge">hourOfDay &lt; 17</code>.</p>
-
-<h3 id="инкапсуляция-переменных">Инкапсуляция переменных</h3>
-
-<p>Условный оператор <code class="highlighter-rouge">if</code> описывает новую концепцию пространства, которая является способом инкапсуляции переменных с помощью фигурных скобок.</p>
-
-<p>Вообразите, что вы хотите подсчитать комиссию, которую взимает ваш клиент. Вот сделка, которую вы заключили:</p>
-
-<p>Вы зарабатываете 25 долларов в час за 40 часов, и 50 долларов за каждый час сверх этого времени.</p>
-
-<p>Используя Swift вы можете расчитать ваши платежи:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var hoursWorked = 45
+</code></pre></div></div> <p>В данном случае вложенные операторы <code class="highlighter-rouge">if</code> проверяют условия одно за другим, пока одно из них не выполнится как <code class="highlighter-rouge">true</code>. Только код, связанный с этим условием будет выполнен, независимо от того могут ли последующие условия <code class="highlighter-rouge">else-if</code>выполниться как <code class="highlighter-rouge">true</code>. Иными словам порядок проверки условий имеет значение!</p> <p>Вы можете добавить условный оператор <code class="highlighter-rouge">else</code>в конец для обработки случая, когда ни одно из условий не выполняется как <code class="highlighter-rouge">true</code>. В таком случае использование <code class="highlighter-rouge">else</code> является опциональным, если вы не нуждаетесь в нем. В использованном примере необходимо, чтобы переменная <code class="highlighter-rouge">timeOfDay</code> имела валидное значение времени, когда вы будете распечатывать его значение.</p> <p>В этом прмиере условный оператор <code class="highlighter-rouge">if</code> получает время, выраженное в часах (числах) и конвертирует его в строку, представляющую описание времени дня, к которому это время относится. Работая с 24-х часовым форматом времени условный оператор проверяет последовательно одно услвоие за другим.</p> <p>В коде выше переменная <code class="highlighter-rouge">hourOfDay</code> имеет значение <code class="highlighter-rouge">12</code>. Поэтому, код будет печатать следующее сообщение:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Afternoon
+</code></pre></div></div> <p>Обратите внимание, что, хотя еще два условия <code class="highlighter-rouge">hourOfDay &lt; 20</code> и <code class="highlighter-rouge">hourOfDay &lt; 24</code> также выполняются как <code class="highlighter-rouge">true</code>, условный оператор выполнит только первый блок, чье условие соответствут <code class="highlighter-rouge">true</code>. В этом случае, выполнится блок с условием <code class="highlighter-rouge">hourOfDay &lt; 17</code>.</p> <h3 id="инкапсуляция-переменных">Инкапсуляция переменных</h3> <p>Условный оператор <code class="highlighter-rouge">if</code> описывает новую концепцию пространства, которая является способом инкапсуляции переменных с помощью фигурных скобок.</p> <p>Вообразите, что вы хотите подсчитать комиссию, которую взимает ваш клиент. Вот сделка, которую вы заключили:</p> <p>Вы зарабатываете 25 долларов в час за 40 часов, и 50 долларов за каждый час сверх этого времени.</p> <p>Используя Swift вы можете расчитать ваши платежи:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var hoursWorked = 45
 
 var price = 0
 if hoursWorked &gt; 40 {
@@ -455,44 +59,16 @@ if hoursWorked &gt; 40 {
 price += hoursWorked * 25
 
 print(price)
-</code></pre></div></div>
-
-<p>Этот код получает количество часов и проверяет, превышает ли это число 40 часов. Если это так, код считает количество часов сверх 40 и умножает его на 50 долларов, затем добавляет результат к цене. Далее код вычитает количество часов превышающих 40 из отработанных часов. Осташееся время умножается на 25 долларов и добавляется к цене.</p>
-
-<p>В примере выше результата должен быть следующим:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1250
-</code></pre></div></div>
-
-<p><code class="highlighter-rouge">hoursOver40</code> объявляет новую константу, которую можно использовать внутри оператора <code class="highlighter-rouge">if</code>. Но, что случится, если вы попробуете использовать ее в конце кода, за пределами оператора <code class="highlighter-rouge">if</code>?</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// ...
+</code></pre></div></div> <p>Этот код получает количество часов и проверяет, превышает ли это число 40 часов. Если это так, код считает количество часов сверх 40 и умножает его на 50 долларов, затем добавляет результат к цене. Далее код вычитает количество часов превышающих 40 из отработанных часов. Осташееся время умножается на 25 долларов и добавляется к цене.</p> <p>В примере выше результата должен быть следующим:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1250
+</code></pre></div></div> <p><code class="highlighter-rouge">hoursOver40</code> объявляет новую константу, которую можно использовать внутри оператора <code class="highlighter-rouge">if</code>. Но, что случится, если вы попробуете использовать ее в конце кода, за пределами оператора <code class="highlighter-rouge">if</code>?</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// ...
 
 print(price)
 print(hoursOver40)
-</code></pre></div></div>
-
-<p>Результат будет следующим:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>error: MyPlayground.playground:8:7: error: use of unresolved identifier 'hoursOver40'
+</code></pre></div></div> <p>Результат будет следующим:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>error: MyPlayground.playground:8:7: error: use of unresolved identifier 'hoursOver40'
 print(hoursOver40)
   ^~~~~~~~~~~
-</code></pre></div></div>
-
-<p>Эта ошибка информирует вас что вы можете использовать константу <code class="highlighter-rouge">hoursOver40</code> в пространстве, в котором эта константа была объявлена (создана). В этом случае, условный оператор <code class="highlighter-rouge">if</code> создает новое пространство, так, что когда это пространство заканчивается, вы не можете больше испоьзовать эту константу.</p>
-
-<p>В любом случае, каждое пространство может использовать переменные и константы объявленные в своем родительством пространстве. В примере выше пространство внутри оператора  <code class="highlighter-rouge">if</code> использует переменные <code class="highlighter-rouge">price</code> и  <code class="highlighter-rouge">hoursWorked</code>, которые были созданы в родительском пространстве.</p>
-
-<h3 id="тернарный-условный-оператор">Тернарный условный оператор</h3>
-
-<p>Тернарный условный оператор получает условие и возвращает одно из двух значений, в зависимости от того, что было результатом выполнения условия: <code class="highlighter-rouge">true</code> or <code class="highlighter-rouge">false</code>:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(&lt;CONDITION&gt;) ? &lt;TRUE VALUE&gt; : &lt;FALSE VALUE&gt;
-</code></pre></div></div>
-
-<p>Рассмотрим пример в котором надо определить минимальное из двух переменных:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let a = 5
+</code></pre></div></div> <p>Эта ошибка информирует вас что вы можете использовать константу <code class="highlighter-rouge">hoursOver40</code> в пространстве, в котором эта константа была объявлена (создана). В этом случае, условный оператор <code class="highlighter-rouge">if</code> создает новое пространство, так, что когда это пространство заканчивается, вы не можете больше испоьзовать эту константу.</p> <p>В любом случае, каждое пространство может использовать переменные и константы объявленные в своем родительством пространстве. В примере выше пространство внутри оператора <code class="highlighter-rouge">if</code> использует переменные <code class="highlighter-rouge">price</code> и <code class="highlighter-rouge">hoursWorked</code>, которые были созданы в родительском пространстве.</p> <h3 id="тернарный-условный-оператор">Тернарный условный оператор</h3> <p>Тернарный условный оператор получает условие и возвращает одно из двух значений, в зависимости от того, что было результатом выполнения условия: <code class="highlighter-rouge">true</code> or <code class="highlighter-rouge">false</code>:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(&lt;CONDITION&gt;) ? &lt;TRUE VALUE&gt; : &lt;FALSE VALUE&gt;
+</code></pre></div></div> <p>Рассмотрим пример в котором надо определить минимальное из двух переменных:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let a = 5
 let b = 10
 
 let min: Int
@@ -501,116 +77,39 @@ if a &lt; b {
 } else {
   min = b
 }
-</code></pre></div></div>
-
-<p>Благодаря тернарному оператору вы можете переписать этот код по-другому:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let a = 5
+</code></pre></div></div> <p>Благодаря тернарному оператору вы можете переписать этот код по-другому:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let a = 5
 let b = 10
 
 let min = a &lt; b ? a : b
-</code></pre></div></div>
-
-<p>Если условие <code class="highlighter-rouge">a &lt; b</code> является <code class="highlighter-rouge">true</code>, тогда результатом будет присвоение  константе <code class="highlighter-rouge">min</code>
-значения <code class="highlighter-rouge">a</code>; если  <code class="highlighter-rouge">false</code>, то результатом будет значение <code class="highlighter-rouge">b</code>.</p>
-
-<p>Тернарный оператор следует применять с осторожностью. Его краткость может стать причиной написания трудночитаемого кода.</p>
-
-<h2 id="циклы">Циклы</h2>
-
-<p>Циклы это способ выполнять код многократно. В самом начале этого раздела вы узнаете о цикле <code class="highlighter-rouge">while</code>.</p>
-
-<h3 id="циклы-while">Циклы While</h3>
-
-<p>Цикл <code class="highlighter-rouge">while</code> повторяет блок кода пока некоторое условие выполняется как <code class="highlighter-rouge">true</code>.</p>
-
-<p>Цикл <code class="highlighter-rouge">while</code> создается следующим образом:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>while &lt;CONDITION&gt; {
+</code></pre></div></div> <p>Если условие <code class="highlighter-rouge">a &lt; b</code> является <code class="highlighter-rouge">true</code>, тогда результатом будет присвоение константе <code class="highlighter-rouge">min</code> значения <code class="highlighter-rouge">a</code>; если <code class="highlighter-rouge">false</code>, то результатом будет значение <code class="highlighter-rouge">b</code>.</p> <p>Тернарный оператор следует применять с осторожностью. Его краткость может стать причиной написания трудночитаемого кода.</p> <h2 id="циклы">Циклы</h2> <p>Циклы это способ выполнять код многократно. В самом начале этого раздела вы узнаете о цикле <code class="highlighter-rouge">while</code>.</p> <h3 id="циклы-while">Циклы While</h3> <p>Цикл <code class="highlighter-rouge">while</code> повторяет блок кода пока некоторое условие выполняется как <code class="highlighter-rouge">true</code>.</p> <p>Цикл <code class="highlighter-rouge">while</code> создается следующим образом:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>while &lt;CONDITION&gt; {
   &lt;LOOP CODE&gt;
 }
-</code></pre></div></div>
-
-<p>Во время каждой итерации цикл проверяет выполнение условия. Если условие выполняется как <code class="highlighter-rouge">true</code>, тогда цикл выполняется и переходит к следующей итерации. Если условие выполняется, как <code class="highlighter-rouge">false</code>, тогда цикл останавливается, Также, как и условный оператор <code class="highlighter-rouge">if</code>, цикл <code class="highlighter-rouge">while</code> создает пространство.</p>
-
-<p>Простейший цикл <code class="highlighter-rouge">while</code>:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>while true {
+</code></pre></div></div> <p>Во время каждой итерации цикл проверяет выполнение условия. Если условие выполняется как <code class="highlighter-rouge">true</code>, тогда цикл выполняется и переходит к следующей итерации. Если условие выполняется, как <code class="highlighter-rouge">false</code>, тогда цикл останавливается, Также, как и условный оператор <code class="highlighter-rouge">if</code>, цикл <code class="highlighter-rouge">while</code> создает пространство.</p> <p>Простейший цикл <code class="highlighter-rouge">while</code>:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>while true {
 }
-</code></pre></div></div>
-
-<p>Этот цикл <code class="highlighter-rouge">while</code>, который никогда не закончится, потому, что условие всегда будет <code class="highlighter-rouge">true</code>. Бесконечный цикл может не стать причиной падения вашей программы, но это может с высокой вероятностью “повесить” ваш компьютер.</p>
-
-<p><a href="https://koenig-media.raywenderlich.com/uploads/2018/07/swift-part-3-force-quit.png"><img src="https://koenig-media.raywenderlich.com/uploads/2018/07/swift-part-3-force-quit-500x500.png" alt="Force quit" /></a></p>
-
-<p>Вот более реальный пример цикла <code class="highlighter-rouge">while</code>:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var sum = 1
+</code></pre></div></div> <p>Этот цикл <code class="highlighter-rouge">while</code>, который никогда не закончится, потому, что условие всегда будет <code class="highlighter-rouge">true</code>. Бесконечный цикл может не стать причиной падения вашей программы, но это может с высокой вероятностью “повесить” ваш компьютер.</p> <p><a href="https://koenig-media.raywenderlich.com/uploads/2018/07/swift-part-3-force-quit.png"><img src="https://koenig-media.raywenderlich.com/uploads/2018/07/swift-part-3-force-quit-500x500.png" alt="Force quit" /></a></p> <p>Вот более реальный пример цикла <code class="highlighter-rouge">while</code>:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var sum = 1
 
 while sum &lt; 1000 {
   sum = sum + (sum + 1)
 }
-</code></pre></div></div>
-
-<p>Этот код расчитывает математическую последовательность, пределом которой является значение больше, чем 1000.</p>
-
-<p>Цикл выполняется следующим образом:</p>
-
-<p><a href="https://koenig-media.raywenderlich.com/uploads/2018/07/swift-part-3-while-loop-iteration.png"><img src="https://koenig-media.raywenderlich.com/uploads/2018/07/swift-part-3-while-loop-iteration-560x500.png" alt="While Loop iteration" /></a></p>
-
-<p>После девяти итераций значение переменой <code class="highlighter-rouge">sum</code> станет равно<code class="highlighter-rouge">1023</code>, поэтому условие выполнения цикла <code class="highlighter-rouge">sum &lt; 1000</code> станет <code class="highlighter-rouge">false</code>. После этого выполнение цикла остановится.</p>
-
-<h3 id="циклы-repeat-while">Циклы Repeat-while</h3>
-
-<p>Это вариант цикла <code class="highlighter-rouge">while</code>названный цикл repeat-while. Отличие от цикла <code class="highlighter-rouge">while</code> состоит в том, что условие выполнения цикла оценивается <em>в конце</em> выполнения цикла, а не в начале.</p>
-
-<p>Цикл <code class="highlighter-rouge">repeat-while</code> конструируется следующим образом:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>repeat {
+</code></pre></div></div> <p>Этот код расчитывает математическую последовательность, пределом которой является значение больше, чем 1000.</p> <p>Цикл выполняется следующим образом:</p> <p><a href="https://koenig-media.raywenderlich.com/uploads/2018/07/swift-part-3-while-loop-iteration.png"><img src="https://koenig-media.raywenderlich.com/uploads/2018/07/swift-part-3-while-loop-iteration-560x500.png" alt="While Loop iteration" /></a></p> <p>После девяти итераций значение переменой <code class="highlighter-rouge">sum</code> станет равно<code class="highlighter-rouge">1023</code>, поэтому условие выполнения цикла <code class="highlighter-rouge">sum &lt; 1000</code> станет <code class="highlighter-rouge">false</code>. После этого выполнение цикла остановится.</p> <h3 id="циклы-repeat-while">Циклы Repeat-while</h3> <p>Это вариант цикла <code class="highlighter-rouge">while</code>названный цикл repeat-while. Отличие от цикла <code class="highlighter-rouge">while</code> состоит в том, что условие выполнения цикла оценивается <em>в конце</em> выполнения цикла, а не в начале.</p> <p>Цикл <code class="highlighter-rouge">repeat-while</code> конструируется следующим образом:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>repeat {
   &lt;LOOP CODE&gt;
 } while &lt;CONDITION&gt;
-</code></pre></div></div>
-
-<p>Вот предыдущий пример, но с сипользованием цикла <code class="highlighter-rouge">repeat-while</code>:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sum = 1
+</code></pre></div></div> <p>Вот предыдущий пример, но с сипользованием цикла <code class="highlighter-rouge">repeat-while</code>:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sum = 1
 
 repeat {
   sum = sum + (sum + 1)
 } while sum &lt; 1000
-</code></pre></div></div>
-
-<p>В этом примере результат будет точно такой-же. При этом, такое совпадение может быть не всегда.</p>
-
-<p>Рассмотрим следующий пример выполнения цикла <code class="highlighter-rouge">while</code>:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sum = 1
+</code></pre></div></div> <p>В этом примере результат будет точно такой-же. При этом, такое совпадение может быть не всегда.</p> <p>Рассмотрим следующий пример выполнения цикла <code class="highlighter-rouge">while</code>:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sum = 1
 
 while sum &lt; 1 {
   sum = sum + (sum + 1)
 }
-</code></pre></div></div>
-
-<p>А сейчас рассмотрим соответствующий цикл <code class="highlighter-rouge">repeat-while</code>, который использует для выполнения точно такое-же условие:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sum = 1
+</code></pre></div></div> <p>А сейчас рассмотрим соответствующий цикл <code class="highlighter-rouge">repeat-while</code>, который использует для выполнения точно такое-же условие:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sum = 1
 
 repeat {
   sum = sum + (sum + 1)
 } while sum &lt; 1
-</code></pre></div></div>
-
-<p>В  случае с регулярным цикло <code class="highlighter-rouge">while</code>, условие <code class="highlighter-rouge">sum &lt; 1</code> равна <code class="highlighter-rouge">false</code> будет выполнено сразу на старте цикла, Это значит, что код в теле цикла не будет выполнен. Значение переменной <code class="highlighter-rouge">sum</code> будет равно <code class="highlighter-rouge">1</code> потому, что цикл не будет выполнен ни разу.</p>
-
-<p>В случае же с циклом <code class="highlighter-rouge">repeat-while</code>, переменная <code class="highlighter-rouge">sum</code> будет равна <code class="highlighter-rouge">3</code>, потому, что цикл будет выполнен один раз.</p>
-
-<h3 id="прерывание-цикла">Прерывание цикла</h3>
-
-<p>Иногда вы хотите прервать цикл ранее, чем он будет закончен. Вы можете использовать для этого выражение <code class="highlighter-rouge">break</code>, которое немедлено остановит выполнение цикла и продолжит выполнение кода после цикла.</p>
-
-<p>Например, рассмотрим следующий код:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sum = 1
+</code></pre></div></div> <p>В случае с регулярным цикло <code class="highlighter-rouge">while</code>, условие <code class="highlighter-rouge">sum &lt; 1</code> равна <code class="highlighter-rouge">false</code> будет выполнено сразу на старте цикла, Это значит, что код в теле цикла не будет выполнен. Значение переменной <code class="highlighter-rouge">sum</code> будет равно <code class="highlighter-rouge">1</code> потому, что цикл не будет выполнен ни разу.</p> <p>В случае же с циклом <code class="highlighter-rouge">repeat-while</code>, переменная <code class="highlighter-rouge">sum</code> будет равна <code class="highlighter-rouge">3</code>, потому, что цикл будет выполнен один раз.</p> <h3 id="прерывание-цикла">Прерывание цикла</h3> <p>Иногда вы хотите прервать цикл ранее, чем он будет закончен. Вы можете использовать для этого выражение <code class="highlighter-rouge">break</code>, которое немедлено остановит выполнение цикла и продолжит выполнение кода после цикла.</p> <p>Например, рассмотрим следующий код:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sum = 1
 
 while true {
   sum = sum + (sum + 1)
@@ -618,73 +117,18 @@ while true {
     break
   }
 }
-</code></pre></div></div>
-
-<p>В этом примере условие выполнения цикла равно <code class="highlighter-rouge">true</code>, так что цикл может выполняться бесконечно. Однако, наличие выражения <code class="highlighter-rouge">break</code> означает, что цикл <code class="highlighter-rouge">while</code> будет остановлен как только значение <code class="highlighter-rouge">sum </code> станет больше или равно <code class="highlighter-rouge">1000</code>.</p>
-
-<h2 id="продвинутое-управление-потоками">Продвинутое управление потоками</h2>
-
-<p>В этом разделе вы продолжите знакомиться с тем, как контролировать выполнение потока. Вы узнаете о цикле, который называется цикл <code class="highlighter-rouge">for</code>.</p>
-
-<h2 id="диапазоны">Диапазоны</h2>
-
-<p>До того, как погрузиться в изучение цикла <code class="highlighter-rouge">for</code>, вам необходимо знать о <a href="https://developer.apple.com/documentation/swift/closedrange"><code class="highlighter-rouge">ClosedRange</code> - закрытом диапазоне</a>
-and <a href="https://developer.apple.com/documentation/swift/range"><code class="highlighter-rouge">Range</code>  - полуоткрытом диапазоне</a> типах, которые позволяют представлять последовательности чисел.</p>
-
-<p>Во-первых, существуют закрытые диапазоны:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let closedRange = 0...5
-</code></pre></div></div>
-
-<p>Три точки (<code class="highlighter-rouge">...</code>) сигнализируют что этот диапазон закрытый, что означает диапазон числе от 0 до 5, включая 0 и 5: <code class="highlighter-rouge">(0, 1, 2, 3, 4, 5)</code>.</p>
-
-<p>Во-вторых, существуют полуоткрытые диапазоны:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let halfOpenRange = 0..&lt;5
-</code></pre></div></div>
-
-<p>В этом случае заменим три точки на две точки и знак меньше (<code class="highlighter-rouge">..&lt;</code>). Полуоткрытый диапазон значит диапазон от 0 до 5, включая 0, но <em>не</em> включая 5: <code class="highlighter-rouge">(0, 1, 2, 3, 4)</code>.</p>
-
-<p>Оба закрытый и полуоткрытый диапазоны должны всегда быть возрастающими. Другими словами, второе число диапазона должно быть всегда больше или равно первому.</p>
-
-<p>Диапазоны обычно используют для циклов <code class="highlighter-rouge">for</code> и выражения <code class="highlighter-rouge">switch</code>.</p>
-
-<h2 id="цикл-for">Цикл For</h2>
-
-<p>Теперь, когда вы знаете немного о диапазонах, самое время взглянуть на цикл <code class="highlighter-rouge">for</code>. Этот цикл используется для выполнения кода определенное число раз.</p>
-
-<p>Конструкция цикла <code class="highlighter-rouge">for</code> выглядит так:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for &lt;CONSTANT&gt; in &lt;RANGE&gt; {
+</code></pre></div></div> <p>В этом примере условие выполнения цикла равно <code class="highlighter-rouge">true</code>, так что цикл может выполняться бесконечно. Однако, наличие выражения <code class="highlighter-rouge">break</code> означает, что цикл <code class="highlighter-rouge">while</code> будет остановлен как только значение <code class="highlighter-rouge">sum </code> станет больше или равно <code class="highlighter-rouge">1000</code>.</p> <h2 id="продвинутое-управление-потоками">Продвинутое управление потоками</h2> <p>В этом разделе вы продолжите знакомиться с тем, как контролировать выполнение потока. Вы узнаете о цикле, который называется цикл <code class="highlighter-rouge">for</code>.</p> <h2 id="диапазоны">Диапазоны</h2> <p>До того, как погрузиться в изучение цикла <code class="highlighter-rouge">for</code>, вам необходимо знать о <a href="https://developer.apple.com/documentation/swift/closedrange"><code class="highlighter-rouge">ClosedRange</code> - закрытом диапазоне</a> and <a href="https://developer.apple.com/documentation/swift/range"><code class="highlighter-rouge">Range</code> - полуоткрытом диапазоне</a> типах, которые позволяют представлять последовательности чисел.</p> <p>Во-первых, существуют закрытые диапазоны:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let closedRange = 0...5
+</code></pre></div></div> <p>Три точки (<code class="highlighter-rouge">...</code>) сигнализируют что этот диапазон закрытый, что означает диапазон числе от 0 до 5, включая 0 и 5: <code class="highlighter-rouge">(0, 1, 2, 3, 4, 5)</code>.</p> <p>Во-вторых, существуют полуоткрытые диапазоны:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let halfOpenRange = 0..&lt;5
+</code></pre></div></div> <p>В этом случае заменим три точки на две точки и знак меньше (<code class="highlighter-rouge">..&lt;</code>). Полуоткрытый диапазон значит диапазон от 0 до 5, включая 0, но <em>не</em> включая 5: <code class="highlighter-rouge">(0, 1, 2, 3, 4)</code>.</p> <p>Оба закрытый и полуоткрытый диапазоны должны всегда быть возрастающими. Другими словами, второе число диапазона должно быть всегда больше или равно первому.</p> <p>Диапазоны обычно используют для циклов <code class="highlighter-rouge">for</code> и выражения <code class="highlighter-rouge">switch</code>.</p> <h2 id="цикл-for">Цикл For</h2> <p>Теперь, когда вы знаете немного о диапазонах, самое время взглянуть на цикл <code class="highlighter-rouge">for</code>. Этот цикл используется для выполнения кода определенное число раз.</p> <p>Конструкция цикла <code class="highlighter-rouge">for</code> выглядит так:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for &lt;CONSTANT&gt; in &lt;RANGE&gt; {
   &lt;LOOP CODE&gt;
 }
-</code></pre></div></div>
-
-<p>Оператор <code class="highlighter-rouge">for</code> начинается со слова <code class="highlighter-rouge">for</code>. Далее последовательно указываются: имя константы, слово  <code class="highlighter-rouge">in</code> и диапазон повторений цикла. Например:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let count = 10
+</code></pre></div></div> <p>Оператор <code class="highlighter-rouge">for</code> начинается со слова <code class="highlighter-rouge">for</code>. Далее последовательно указываются: имя константы, слово <code class="highlighter-rouge">in</code> и диапазон повторений цикла. Например:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let count = 10
 var sum = 0
 
 for i in 1...count {
   sum += i
 }
-</code></pre></div></div>
-
-<p>Цикл <code class="highlighter-rouge">for</code> выполняется в диапазоне от 1 до значения константы <code class="highlighter-rouge">count</code>. В первом выполнении цикла <code class="highlighter-rouge">i</code> будет равно первому элементу диапазона - 1. На каждом повторении <code class="highlighter-rouge">i</code> будет увеличиваться на единицу, до тех пор, пока не будет равной <code class="highlighter-rouge">count</code>, после чего цикл будет выполнен последний раз.</p>
-
-<p>Если вы используете полуоткрытый диапазон, последняя итерация будет при значении <code class="highlighter-rouge">i</code> равном <code class="highlighter-rouge">count - 1</code>.</p>
-
-<p>Внутри цикла  вы добавляете <code class="highlighter-rouge">i</code> к переменной <code class="highlighter-rouge">sum</code>. Эта операция повторяется 10 раз , таким образом выполняется последовательно сложение <code class="highlighter-rouge">1 + 2 + 3 + 4 + 5 + ...</code> до тех пор пока <code class="highlighter-rouge">i</code> не будет равно 10.</p>
-
-<p>На рисунке ниже изображены значения константы <code class="highlighter-rouge">i</code> и переменной <code class="highlighter-rouge">sum</code> для каждой итерации:</p>
-
-<p><img src="https://koenig-media.raywenderlich.com/uploads/2018/07/swift-part-3-for-loop-iteration.png" alt="Итерации цикла for" /></p>
-
-<p>Константа <code class="highlighter-rouge">i</code> видима только внутри пространства цикла <code class="highlighter-rouge">for</code>, что значит, что эта константа не доступна за пределами цикла.</p>
-
-<p>В случае, если вы не хотите использовать в цикле константы вовсе, вы можете использовать знак нижнего подчеркивания (_) для укзания что игнооируете ее (константу). Например:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sum = 1
+</code></pre></div></div> <p>Цикл <code class="highlighter-rouge">for</code> выполняется в диапазоне от 1 до значения константы <code class="highlighter-rouge">count</code>. В первом выполнении цикла <code class="highlighter-rouge">i</code> будет равно первому элементу диапазона - 1. На каждом повторении <code class="highlighter-rouge">i</code> будет увеличиваться на единицу, до тех пор, пока не будет равной <code class="highlighter-rouge">count</code>, после чего цикл будет выполнен последний раз.</p> <p>Если вы используете полуоткрытый диапазон, последняя итерация будет при значении <code class="highlighter-rouge">i</code> равном <code class="highlighter-rouge">count - 1</code>.</p> <p>Внутри цикла вы добавляете <code class="highlighter-rouge">i</code> к переменной <code class="highlighter-rouge">sum</code>. Эта операция повторяется 10 раз , таким образом выполняется последовательно сложение <code class="highlighter-rouge">1 + 2 + 3 + 4 + 5 + ...</code> до тех пор пока <code class="highlighter-rouge">i</code> не будет равно 10.</p> <p>На рисунке ниже изображены значения константы <code class="highlighter-rouge">i</code> и переменной <code class="highlighter-rouge">sum</code> для каждой итерации:</p> <p><img src="https://koenig-media.raywenderlich.com/uploads/2018/07/swift-part-3-for-loop-iteration.png" alt="Итерации цикла for" /></p> <p>Константа <code class="highlighter-rouge">i</code> видима только внутри пространства цикла <code class="highlighter-rouge">for</code>, что значит, что эта константа не доступна за пределами цикла.</p> <p>В случае, если вы не хотите использовать в цикле константы вовсе, вы можете использовать знак нижнего подчеркивания (_) для укзания что игнооируете ее (константу). Например:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sum = 1
 var lastSum = 0
 
 for _ in 0..&lt;count {
@@ -692,39 +136,11 @@ for _ in 0..&lt;count {
   sum = sum + lastSum
   lastSum = temp
 }
-</code></pre></div></div>
-
-<p>Этот код не имеет константы в цикле, цикл просто выполняется определенное число раз. В этом случае диапазон начинается от 0 и заканчивается значением <code class="highlighter-rouge">count</code>, при этом диапазон полуоткрытый. Таким способом обычно записываются циклы, которые выполняются определенное число раз.</p>
-
-<p>Также возможно выполнить только те итерации, которые соответствуют определнному условию. Например, представим, что вы хотите вычислить сумму только нечетных чисел:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var sum = 0
+</code></pre></div></div> <p>Этот код не имеет константы в цикле, цикл просто выполняется определенное число раз. В этом случае диапазон начинается от 0 и заканчивается значением <code class="highlighter-rouge">count</code>, при этом диапазон полуоткрытый. Таким способом обычно записываются циклы, которые выполняются определенное число раз.</p> <p>Также возможно выполнить только те итерации, которые соответствуют определнному условию. Например, представим, что вы хотите вычислить сумму только нечетных чисел:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var sum = 0
 for i in 1...count where i % 2 == 1 {
   sum += i
 }
-</code></pre></div></div>
-
-<p>Цикл выше содержит оператор <code class="highlighter-rouge">where</code>. Благодаря этому цикл будет выполнять код в диапазоне от 1 до <code class="highlighter-rouge">count</code>, но только в том случае, когда условие предусмотренное <code class="highlighter-rouge">where</code> будет <code class="highlighter-rouge">true</code>. В этом случае это будет, когда значение <code class="highlighter-rouge">i</code> является нечетным числом.</p>
-
-<h3 id="оператор-continue">Оператор Continue</h3>
-
-<p>Иногда вым может понадобится пропустить итерацию цикла в определенном случае, без прерывания самого цикла целиком. Вы можете сделать это с помощью оператора <code class="highlighter-rouge">continue</code>, который немедленно закончит текущую итерацию и перейдет к следующей.</p>
-
-<p>Использование <code class="highlighter-rouge">continue</code> вместо простого <code class="highlighter-rouge">where</code> предпочтительнее, когда вам необходим высокоуровневый контроль над исполнением кода.</p>
-
-<p>Например рассмотрим сетку 8х8, в которой каждая ячейка содержит значение номера ряда умноженого на колонку:</p>
-
-<p><img src="https://koenig-media.raywenderlich.com/uploads/2016/09/full_board-496x500.png" alt="full_board" /></p>
-
-<p>Это очень похоже на таблицу умножения, не правда ли?</p>
-
-<p>Скажем, вы хотите расчитать сумму всех ячеек за исключением тех, которые расположены на четных рядах:</p>
-
-<p><img src="https://koenig-media.raywenderlich.com/uploads/2016/09/first_board_example-496x500.png" alt="first_board_example" /></p>
-
-<p>С помощью цикла <code class="highlighter-rouge">for</code> эту задачу можно решить следующим образом:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sum = 0
+</code></pre></div></div> <p>Цикл выше содержит оператор <code class="highlighter-rouge">where</code>. Благодаря этому цикл будет выполнять код в диапазоне от 1 до <code class="highlighter-rouge">count</code>, но только в том случае, когда условие предусмотренное <code class="highlighter-rouge">where</code> будет <code class="highlighter-rouge">true</code>. В этом случае это будет, когда значение <code class="highlighter-rouge">i</code> является нечетным числом.</p> <h3 id="оператор-continue">Оператор Continue</h3> <p>Иногда вым может понадобится пропустить итерацию цикла в определенном случае, без прерывания самого цикла целиком. Вы можете сделать это с помощью оператора <code class="highlighter-rouge">continue</code>, который немедленно закончит текущую итерацию и перейдет к следующей.</p> <p>Использование <code class="highlighter-rouge">continue</code> вместо простого <code class="highlighter-rouge">where</code> предпочтительнее, когда вам необходим высокоуровневый контроль над исполнением кода.</p> <p>Например рассмотрим сетку 8х8, в которой каждая ячейка содержит значение номера ряда умноженого на колонку:</p> <p><img src="https://koenig-media.raywenderlich.com/uploads/2016/09/full_board-496x500.png" alt="full_board" /></p> <p>Это очень похоже на таблицу умножения, не правда ли?</p> <p>Скажем, вы хотите расчитать сумму всех ячеек за исключением тех, которые расположены на четных рядах:</p> <p><img src="https://koenig-media.raywenderlich.com/uploads/2016/09/first_board_example-496x500.png" alt="first_board_example" /></p> <p>С помощью цикла <code class="highlighter-rouge">for</code> эту задачу можно решить следующим образом:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sum = 0
 
 for row in 0..&lt;8 {
   if row % 2 == 0 {
@@ -735,19 +151,7 @@ for row in 0..&lt;8 {
     sum += row * column
   }
 }
-</code></pre></div></div>
-
-<p>Когда остаток от деления номера ряда на 2 равен 0, тогда этот ряд четный. В этом случае  <code class="highlighter-rouge">continue</code> заставит цикл <code class="highlighter-rouge">for</code> перепрыгнуть на следующий ряд.</p>
-
-<p>Также, как и <code class="highlighter-rouge">break</code>, <code class="highlighter-rouge">continue</code> работает с обоими циклами - <code class="highlighter-rouge">for</code> и <code class="highlighter-rouge">while</code>.</p>
-
-<h2 id="оператор-switch">Оператор Switch</h2>
-
-<p>Еще один способ управления потоками осуществляется через использование оператора <code class="highlighter-rouge">switch</code>, который позволяет вам выполнять различные части кода в зависимости от значение переменной или константы.</p>
-
-<p>Вот очень простой оператор <code class="highlighter-rouge">switch</code>, который обрабатывает целые числа:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let number = 10
+</code></pre></div></div> <p>Когда остаток от деления номера ряда на 2 равен 0, тогда этот ряд четный. В этом случае <code class="highlighter-rouge">continue</code> заставит цикл <code class="highlighter-rouge">for</code> перепрыгнуть на следующий ряд.</p> <p>Также, как и <code class="highlighter-rouge">break</code>, <code class="highlighter-rouge">continue</code> работает с обоими циклами - <code class="highlighter-rouge">for</code> и <code class="highlighter-rouge">while</code>.</p> <h2 id="оператор-switch">Оператор Switch</h2> <p>Еще один способ управления потоками осуществляется через использование оператора <code class="highlighter-rouge">switch</code>, который позволяет вам выполнять различные части кода в зависимости от значение переменной или константы.</p> <p>Вот очень простой оператор <code class="highlighter-rouge">switch</code>, который обрабатывает целые числа:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let number = 10
 
 switch number {
 case 0:
@@ -755,32 +159,14 @@ case 0:
 default:
   print("Non-zero")
 }
-</code></pre></div></div>
-
-<p>После выполнение кода в консоли будет напечатано:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Non-zero
-</code></pre></div></div>
-
-<p>Целью оператора <code class="highlighter-rouge">switch</code> было определение является ли число нулем.</p>
-
-<p>Для обработки конкрентного значения вы используете <code class="highlighter-rouge">case</code>, представляющее значение, которое вы хотите сравнить с получаемым значением, в даном случае это <code class="highlighter-rouge">0</code>. Также вы используете <code class="highlighter-rouge">default</code>, чтобы назначить действие, если оператор <code class="highlighter-rouge">switch</code> получит любое другое число, отличное от 0.</p>
-
-<p>Вот другой пример использования <code class="highlighter-rouge">switch</code>:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>switch number {
+</code></pre></div></div> <p>После выполнение кода в консоли будет напечатано:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Non-zero
+</code></pre></div></div> <p>Целью оператора <code class="highlighter-rouge">switch</code> было определение является ли число нулем.</p> <p>Для обработки конкрентного значения вы используете <code class="highlighter-rouge">case</code>, представляющее значение, которое вы хотите сравнить с получаемым значением, в даном случае это <code class="highlighter-rouge">0</code>. Также вы используете <code class="highlighter-rouge">default</code>, чтобы назначить действие, если оператор <code class="highlighter-rouge">switch</code> получит любое другое число, отличное от 0.</p> <p>Вот другой пример использования <code class="highlighter-rouge">switch</code>:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>switch number {
 case 10:
   print("It's ten!")
 default:
   break
 }
-</code></pre></div></div>
-
-<p>В этом примере вы проверяете является ли значение переменной или константы равным 10, и, если это так, в консоли выводится соответствующее сообщение. Для значений, отличных от 10 никаких действий не предусмотрено. Когда вы не хотите выполнения какого-либо действия, или вы хотите определить дефолтное состояние для выполнения кода, можно использовать оператор <code class="highlighter-rouge">break</code>. Это подскажет Swift’у что вы не написали здесь никакго кода и никаких действий выполняться не будет. <code class="highlighter-rouge">сase</code> никогда не должен оставаться пустым, поэтому необходимо писать код, даже если этим кодом будет оператор <code class="highlighter-rouge">break</code>!</p>
-
-<p>Оператор <code class="highlighter-rouge">switch</code> работает с любыми типами данных! Вот пример обработки для строк:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let string = "Dog"
+</code></pre></div></div> <p>В этом примере вы проверяете является ли значение переменной или константы равным 10, и, если это так, в консоли выводится соответствующее сообщение. Для значений, отличных от 10 никаких действий не предусмотрено. Когда вы не хотите выполнения какого-либо действия, или вы хотите определить дефолтное состояние для выполнения кода, можно использовать оператор <code class="highlighter-rouge">break</code>. Это подскажет Swift’у что вы не написали здесь никакго кода и никаких действий выполняться не будет. <code class="highlighter-rouge">сase</code> никогда не должен оставаться пустым, поэтому необходимо писать код, даже если этим кодом будет оператор <code class="highlighter-rouge">break</code>!</p> <p>Оператор <code class="highlighter-rouge">switch</code> работает с любыми типами данных! Вот пример обработки для строк:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let string = "Dog"
 
 switch string {
 case "Cat", "Dog":
@@ -788,20 +174,8 @@ case "Cat", "Dog":
 default:
   print("Animal is not a house pet.")
 }
-</code></pre></div></div>
-
-<p>После выполнения кода в консоле появится сообщение:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Animal is a house pet.
-</code></pre></div></div>
-
-<p>В этом примере, вы передаете два значения для одного оператора <code class="highlighter-rouge">case</code>, поэтому код будет выполняться в случае, если переданое значение будет либо <code class="highlighter-rouge">"Cat"</code>, либо <code class="highlighter-rouge">"Dog"</code>.</p>
-
-<h3 id="продвинутые-действия-с-оператором-switch">Продвинутые действия с оператором Switch</h3>
-
-<p>Вы можете также передать вашему оператору <code class="highlighter-rouge">switch</code> более, чем один <code class="highlighter-rouge">case</code>. В предыдущем разделе вы видели, что оператор <code class="highlighter-rouge">if</code> использует множество вложенных операторов <code class="highlighter-rouge">else-if</code> для конвертирования времени. Вы можете переписать это более кратко, с использванием оператора <code class="highlighter-rouge">switch</code>:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let hourOfDay = 12
+</code></pre></div></div> <p>После выполнения кода в консоле появится сообщение:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Animal is a house pet.
+</code></pre></div></div> <p>В этом примере, вы передаете два значения для одного оператора <code class="highlighter-rouge">case</code>, поэтому код будет выполняться в случае, если переданое значение будет либо <code class="highlighter-rouge">"Cat"</code>, либо <code class="highlighter-rouge">"Dog"</code>.</p> <h3 id="продвинутые-действия-с-оператором-switch">Продвинутые действия с оператором Switch</h3> <p>Вы можете также передать вашему оператору <code class="highlighter-rouge">switch</code> более, чем один <code class="highlighter-rouge">case</code>. В предыдущем разделе вы видели, что оператор <code class="highlighter-rouge">if</code> использует множество вложенных операторов <code class="highlighter-rouge">else-if</code> для конвертирования времени. Вы можете переписать это более кратко, с использванием оператора <code class="highlighter-rouge">switch</code>:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let hourOfDay = 12
 var timeOfDay = ""
 
 switch hourOfDay {
@@ -820,16 +194,8 @@ default:
 }
 
 print(timeOfDay)
-</code></pre></div></div>
-
-<p>Выполнение этого кода выведет в консоль сообщение:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Afternoon
-</code></pre></div></div>
-
-<p>Помните диапазоны? Вы можете использовать диапазоны в операторе <code class="highlighter-rouge">switch</code>. Можно переписать этот код еще более кратко:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var timeOfDay2 = ""
+</code></pre></div></div> <p>Выполнение этого кода выведет в консоль сообщение:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Afternoon
+</code></pre></div></div> <p>Помните диапазоны? Вы можете использовать диапазоны в операторе <code class="highlighter-rouge">switch</code>. Можно переписать этот код еще более кратко:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var timeOfDay2 = ""
 
 switch hourOfDay {
 case 0...5:
@@ -847,41 +213,19 @@ default:
 }
 
 print(timeOfDay2)
-</code></pre></div></div>
-
-<p>Также можно сопоставлять условия, основанные на свойствах значения. Как вы узнали ранее в первой части этой серии, вы можете использовать оператор модуль для определения является ли целое число четным или нечетным. Например так:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>switch number {
+</code></pre></div></div> <p>Также можно сопоставлять условия, основанные на свойствах значения. Как вы узнали ранее в первой части этой серии, вы можете использовать оператор модуль для определения является ли целое число четным или нечетным. Например так:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>switch number {
 case let x where x % 2 == 0:
   print("Even")
 default:
   print("Odd")
 }
-</code></pre></div></div>
-
-<p>Выполнение этого кода выведет в консоль сообщение:</p>
-
-<p>Even</p>
-
-<p>Оператор <code class="highlighter-rouge">switch</code> использует синаксис <code class="highlighter-rouge">let-where</code>, который означает, что <code class="highlighter-rouge">case</code> будет выполненен только если определенное условие будет выполняться как <code class="highlighter-rouge">true</code>. Часть синтаксиса <code class="highlighter-rouge">let</code> связывает значение и имя, в то время как оператор <code class="highlighter-rouge">where</code> обеспечивает булевое условие, которое должно выполняться как <code class="highlighter-rouge">true</code> для выполнения <code class="highlighter-rouge">case</code>. В этом примере  <code class="highlighter-rouge">case</code> выполняется в случае, если значение четное, т.е. если значение остатка от деления на 2 равно 0.</p>
-
-<p>Этот метод, с помощью которого вы можете сравнивать числа еще называют паттерн сравнения.</p>
-
-<p>В предыдущем примере была использована в общем-то ненужная константа <code class="highlighter-rouge">х</code>, фактически это еще одно наименование для <code class="highlighter-rouge">number</code>. Вы можете использовать <code class="highlighter-rouge">number</code> в конструкции <code class="highlighter-rouge">where</code>и заменить константу <code class="highlighter-rouge">х</code> на знак нижнего подчеркивания.</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>switch number {
+</code></pre></div></div> <p>Выполнение этого кода выведет в консоль сообщение:</p> <p>Even</p> <p>Оператор <code class="highlighter-rouge">switch</code> использует синаксис <code class="highlighter-rouge">let-where</code>, который означает, что <code class="highlighter-rouge">case</code> будет выполненен только если определенное условие будет выполняться как <code class="highlighter-rouge">true</code>. Часть синтаксиса <code class="highlighter-rouge">let</code> связывает значение и имя, в то время как оператор <code class="highlighter-rouge">where</code> обеспечивает булевое условие, которое должно выполняться как <code class="highlighter-rouge">true</code> для выполнения <code class="highlighter-rouge">case</code>. В этом примере <code class="highlighter-rouge">case</code> выполняется в случае, если значение четное, т.е. если значение остатка от деления на 2 равно 0.</p> <p>Этот метод, с помощью которого вы можете сравнивать числа еще называют паттерн сравнения.</p> <p>В предыдущем примере была использована в общем-то ненужная константа <code class="highlighter-rouge">х</code>, фактически это еще одно наименование для <code class="highlighter-rouge">number</code>. Вы можете использовать <code class="highlighter-rouge">number</code> в конструкции <code class="highlighter-rouge">where</code>и заменить константу <code class="highlighter-rouge">х</code> на знак нижнего подчеркивания.</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>switch number {
 case _ where number % 2 == 0:
   print("Even")
 default:
   print("Odd")
 }
-</code></pre></div></div>
-
-<h3 id="частичное-сравнивание">Частичное сравнивание</h3>
-
-<p>Другой способ, в котором вы можете очень эффективно использовать оператор <code class="highlighter-rouge">switch</code>для сравнения выглядит следующим образо:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let coordinates = (x: 3, y: 2, z: 5)
+</code></pre></div></div> <h3 id="частичное-сравнивание">Частичное сравнивание</h3> <p>Другой способ, в котором вы можете очень эффективно использовать оператор <code class="highlighter-rouge">switch</code>для сравнения выглядит следующим образо:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let coordinates = (x: 3, y: 2, z: 5)
 
 switch coordinates {
 case (0, 0, 0): // 1
@@ -895,21 +239,7 @@ case (0, 0, _): // 4
 default:        // 5
   print("Somewhere in space")
 }
-</code></pre></div></div>
-
-<p>Этот оператор <code class="highlighter-rouge">switch</code> использует частичное сравнивание. Вот что происходит в коде, по-порядку:</p>
-
-<ol>
-  <li>Точное соответствие <code class="highlighter-rouge">case</code> в котором значение <code class="highlighter-rouge">(0, 0, 0)</code>. Это центр 3D координат.</li>
-  <li>Совпадение y=0, z=0 и любое значение x. Это координата по оси х.</li>
-  <li>Совпадение x=0, z=0 и любое значение y. Это координата по оси y.</li>
-  <li>Совпадение x=0, y=0 и любое значение z. Это координата по оси z.</li>
-  <li>Совпадение  с остальными координатами.</li>
-</ol>
-
-<p>В данном примере используется знак нижнего подчеркивания потому, что нет особой необходимости в том, чтобы указывать наименование константы. Если же такая необходимость существует, то можно переписать код следующим образом.</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>switch coordinates {
+</code></pre></div></div> <p>Этот оператор <code class="highlighter-rouge">switch</code> использует частичное сравнивание. Вот что происходит в коде, по-порядку:</p> <ol> <li>Точное соответствие <code class="highlighter-rouge">case</code> в котором значение <code class="highlighter-rouge">(0, 0, 0)</code>. Это центр 3D координат.</li> <li>Совпадение y=0, z=0 и любое значение x. Это координата по оси х.</li> <li>Совпадение x=0, z=0 и любое значение y. Это координата по оси y.</li> <li>Совпадение x=0, y=0 и любое значение z. Это координата по оси z.</li> <li>Совпадение с остальными координатами.</li> </ol> <p>В данном примере используется знак нижнего подчеркивания потому, что нет особой необходимости в том, чтобы указывать наименование константы. Если же такая необходимость существует, то можно переписать код следующим образом.</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>switch coordinates {
 case (0, 0, 0):
   print("Origin")
 case (let x, 0, 0):
@@ -921,17 +251,7 @@ case (0, 0, let z):
 case let (x, y, z):
   print("Somewhere in space at x = \(x), y = \(y), z = \(z)")
 }
-</code></pre></div></div>
-
-<p>В данном случае используется синтаксис <code class="highlighter-rouge">let</code> для извлечения соответствующих значений. Затем в консоле выводится значение с помощью строковой интерполяции.</p>
-
-<p>Обратите внимание на то, что в данном случае отсутствует дефолтное значение для оператора <code class="highlighter-rouge">switch</code>. Это потому, что последний <code class="highlighter-rouge">case</code> по сути является тем самым дефолтным значением. Он соответствуетлюбому значениям, которые не соответствуют предыдущим <code class="highlighter-rouge">case</code>ам. В <code class="highlighter-rouge">switch</code> нет необходимости в определении значения дефолтного <code class="highlighter-rouge">case</code>, если предусмотрены все возможные значения.</p>
-
-<p>Также стоит обратить внимание на то, что правила синстаксиса позволяют указывать один оператор <code class="highlighter-rouge">let</code> для всех связанных значений кортежа: <code class="highlighter-rouge">let (x, y, z)</code> это то же самое, что <code class="highlighter-rouge">(let x, let y, let z)</code>.</p>
-
-<p>Таким образом, можно, используя тот же самый синтаксис <code class="highlighter-rouge">let-where</code>, записать код с более комплексным решением, например так:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>switch coordinates {
+</code></pre></div></div> <p>В данном случае используется синтаксис <code class="highlighter-rouge">let</code> для извлечения соответствующих значений. Затем в консоле выводится значение с помощью строковой интерполяции.</p> <p>Обратите внимание на то, что в данном случае отсутствует дефолтное значение для оператора <code class="highlighter-rouge">switch</code>. Это потому, что последний <code class="highlighter-rouge">case</code> по сути является тем самым дефолтным значением. Он соответствуетлюбому значениям, которые не соответствуют предыдущим <code class="highlighter-rouge">case</code>ам. В <code class="highlighter-rouge">switch</code> нет необходимости в определении значения дефолтного <code class="highlighter-rouge">case</code>, если предусмотрены все возможные значения.</p> <p>Также стоит обратить внимание на то, что правила синстаксиса позволяют указывать один оператор <code class="highlighter-rouge">let</code> для всех связанных значений кортежа: <code class="highlighter-rouge">let (x, y, z)</code> это то же самое, что <code class="highlighter-rouge">(let x, let y, let z)</code>.</p> <p>Таким образом, можно, используя тот же самый синтаксис <code class="highlighter-rouge">let-where</code>, записать код с более комплексным решением, например так:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>switch coordinates {
 case let (x, y, _) where y == x:
   print("Along the y = x line.")
 case let (x, y, _) where y == x * x:
@@ -939,171 +259,4 @@ case let (x, y, _) where y == x * x:
 default:
   break
 }
-</code></pre></div></div>
-
-<p>Как вы видите в данном случае сравнивается  “y равный x” и “y равный квадрату x”.</p>
-
-<p>На этом мини-серия по Swift закончена. Желаем Вам успехов в изучении этого замечательного языка.</p>
-
-<p><a href="https://www.raywenderlich.com/6366-swift-tutorial-part-3-flow-control">Источник</a></p>
-
-  </div>
-
-  <div class="likely">
-    <div class="telegram" data-url="https://losthuman.ru/categories/code/2019/01/22/swift-flow-control-chast-3.html" data-title="Swift управление потоками Часть 3">Отправить</div>
-    <div class="vkontakte" data-url="https://losthuman.ru/categories/code/2019/01/22/swift-flow-control-chast-3.html" data-title="Swift управление потоками Часть 3">Поделиться</div>
-    <div class="odnoklassniki" data-url="https://losthuman.ru/categories/code/2019/01/22/swift-flow-control-chast-3.html" data-title="Swift управление потоками Часть 3">Класснуть</div>
-    <div class="facebook" data-url="https://losthuman.ru/categories/code/2019/01/22/swift-flow-control-chast-3.html" data-title="Swift управление потоками Часть 3">Поделиться</div>
-    <div class="gplus" data-url="https://losthuman.ru/categories/code/2019/01/22/swift-flow-control-chast-3.html" data-title="Swift управление потоками Часть 3">Плюсануть</div>
-    <div class="twitter" data-url="https://losthuman.ru/categories/code/2019/01/22/swift-flow-control-chast-3.html" data-title="Swift управление потоками Часть 3">Твитнуть</div>
-  </div>
-
-  <!-- <div class="article-ad">
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <ins class="adsbygoogle"
-         style="display:block; text-align:center;"
-         data-ad-layout="in-article"
-         data-ad-format="fluid"
-         data-ad-client="ca-pub-5706627784425194"
-         data-ad-slot="8358109938"></ins>
-    <script>
-         (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-</div>
- -->
-  
-  <!--<div id="disqus_thread"></div>
-<script>
-
-/**
-*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-/*
-var disqus_config = function () {
-this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-*/
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://losthuman-ru.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>--><div id="vk_comments"></div>
-<script type="text/javascript">
-window.onload = function () {
- VK.init({apiId: 7004890, onlyWidgets: true});
- VK.Widgets.Comments('vk_comments', {limit: 20, attach: "graffiti,photo,video,audio", norealtime: 0});
-}
-</script><a class="u-url" href="/categories/code/2019/01/22/swift-flow-control-chast-3.html" hidden></a>
-</article>
-
-              
-            </div>
-            <div class="col-md-4">
-              
-               <div class="article-ad">
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- losthuman-aside -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-5706627784425194"
-     data-ad-slot="4814492309"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-</div>
-               <ul>
-                 <h4>Tags</h4><ul>
-    <li class="tags" ><a href="/tags/iphone">iphone (1) </a> </li> 
-    <li class="tags" ><a href="/tags/apple">apple (4) </a> </li> 
-    <li class="tags" ><a href="/tags/security">security (5) </a> </li> 
-    <li class="tags" ><a href="/tags/hackers">hackers (1) </a> </li> 
-    <li class="tags" ><a href="/tags/google">google (2) </a> </li> 
-    <li class="tags" ><a href="/tags/angular">angular (1) </a> </li> 
-    <li class="tags" ><a href="/tags/programming">programming (11) </a> </li> 
-    <li class="tags" ><a href="/tags/gagets">gagets (3) </a> </li> 
-    <li class="tags" ><a href="/tags/regex">regex (1) </a> </li> 
-    <li class="tags" ><a href="/tags/wordpress">wordpress (1) </a> </li> 
-    <li class="tags" ><a href="/tags/python">python (4) </a> </li> 
-    <li class="tags" ><a href="/tags/twitter">twitter (1) </a> </li> 
-    <li class="tags" ><a href="/tags/shazam">shazam (1) </a> </li> 
-    <li class="tags" ><a href="/tags/application">application (1) </a> </li> 
-    <li class="tags" ><a href="/tags/photo">photo (1) </a> </li> 
-    <li class="tags" ><a href="/tags/css">css (1) </a> </li> 
-    <li class="tags" ><a href="/tags/bittorrent">bittorrent (1) </a> </li> 
-    <li class="tags" ><a href="/tags/amazon">amazon (1) </a> </li> 
-    <li class="tags" ><a href="/tags/swift">swift (4) </a> </li> 
-    <li class="tags" ><a href="/tags/IOS">IOS (1) </a> </li> 
-    <li class="tags" ><a href="/tags/uber">uber (1) </a> </li> 
-    <li class="tags" ><a href="/tags/npm">npm (1) </a> </li> 
-    <li class="tags" ><a href="/tags/nodejs">nodejs (1) </a> </li> 
-    <li class="tags" ><a href="/tags/code">code (1) </a> </li> 
-    <li class="tags" ><a href="/tags/code swift">code swift (1) </a> </li> 
-    <li class="tags" ><a href="/tags/jekyll">jekyll (1) </a> </li> 
-    <li class="tags" ><a href="/tags/GitHub">GitHub (1) </a> </li> 
-    <li class="tags" ><a href="/tags/GitHub Pages">GitHub Pages (1) </a> </li> 
-    
-</ul></ul>
-              <div class="btcwdgt-chart">
-style="margin-top: 30px">
-    <script>
-      (function(b,i,t,C,O,I,N) {
-        window.addEventListener('load',function() {
-          if(b.getElementById(C))return;
-          I=b.createElement(i),N=b.getElementsByTagName(i)[0];
-          I.src=t;I.id=C;N.parentNode.insertBefore(I, N);
-        },false)
-      })(document,'script','https://widgets.bitcoin.com/widget.js','btcwdgt');
-    </script>
-  </div>
-            </div>
-          </div>
-        </div>
-              <div class="article-ad">
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <ins class="adsbygoogle"
-         style="display:block; text-align:center;"
-         data-ad-layout="in-article"
-         data-ad-format="fluid"
-         data-ad-client="ca-pub-5706627784425194"
-         data-ad-slot="8358109938"></ins>
-    <script>
-         (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-</div>
-
-              
-    </div>
-    </main><footer class="site-footer h-card">
-  <data class="u-url" href="/"></data>
-
-  <div class="wrapper">
-
-    <h2 class="footer-heading">Losthuman</h2>
-
-    <div class="footer-col-wrapper">
-      <div class="footer-col footer-col-1">
-        <ul class="contact-list">
-          <li class="p-name">Losthuman</li><li><a class="u-email" href="mailto:info@losthuman.ru">info@losthuman.ru</a></li></ul>
-      </div>
-
-      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://twitter.com/losthuman9"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">losthuman9</span></a></li></ul>
-</div>
-
-      <div class="footer-col footer-col-3">
-        <p>Ничего особо ценного</p>
-      </div>
-    </div>
-
-  </div>
-
-</footer>
-<script src="/assets/likely.js"></script>
-  </body>
-
-</html>
+</code></pre></div></div> <p>Как вы видите в данном случае сравнивается “y равный x” и “y равный квадрату x”.</p> <p>На этом мини-серия по Swift закончена. Желаем Вам успехов в изучении этого замечательного языка.</p> <p><a href="https://www.raywenderlich.com/6366-swift-tutorial-part-3-flow-control">Источник</a></p> </div> <div class="likely"> <div class="telegram" data-url="http://localhost:4000/categories/code/2019/01/22/swift-flow-control-chast-3.html" data-title="Swift управление потоками Часть 3">Отправить</div> <div class="vkontakte" data-url="http://localhost:4000/categories/code/2019/01/22/swift-flow-control-chast-3.html" data-title="Swift управление потоками Часть 3">Поделиться</div> <div class="odnoklassniki" data-url="http://localhost:4000/categories/code/2019/01/22/swift-flow-control-chast-3.html" data-title="Swift управление потоками Часть 3">Класснуть</div> <div class="facebook" data-url="http://localhost:4000/categories/code/2019/01/22/swift-flow-control-chast-3.html" data-title="Swift управление потоками Часть 3">Поделиться</div> <div class="gplus" data-url="http://localhost:4000/categories/code/2019/01/22/swift-flow-control-chast-3.html" data-title="Swift управление потоками Часть 3">Плюсануть</div> <div class="twitter" data-url="http://localhost:4000/categories/code/2019/01/22/swift-flow-control-chast-3.html" data-title="Swift управление потоками Часть 3">Твитнуть</div> </div> <!-- <div class="article-ad"> <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5706627784425194" data-ad-slot="8358109938"></ins> <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script> </div> --> <!--<div id="disqus_thread"></div> <script> /** * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS. * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/ /* var disqus_config = function () { this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable }; */ (function() { // DON'T EDIT BELOW THIS LINE var d = document, s = d.createElement('script'); s.src = 'https://losthuman-ru.disqus.com/embed.js'; s.setAttribute('data-timestamp', +new Date()); (d.head || d.body).appendChild(s); })(); </script> <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>--><div id="vk_comments"></div> <script type="text/javascript"> window.onload = function () { VK.init({apiId: 7004890, onlyWidgets: true}); VK.Widgets.Comments('vk_comments', {limit: 20, attach: "graffiti,photo,video,audio", norealtime: 0}); } </script><a class="u-url" href="/categories/code/2019/01/22/swift-flow-control-chast-3.html" hidden></a> </article> </div> <div class="col-md-4"> <div class="article-ad"> <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> <!-- losthuman-aside --> <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5706627784425194" data-ad-slot="4814492309" data-ad-format="auto" data-full-width-responsive="true"></ins> <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script> </div> <ul> <h4>Tags</h4><ul> <li class="tags" ><a href="/tags/iphone">iphone (1) </a> </li> <li class="tags" ><a href="/tags/apple">apple (4) </a> </li> <li class="tags" ><a href="/tags/security">security (5) </a> </li> <li class="tags" ><a href="/tags/hackers">hackers (1) </a> </li> <li class="tags" ><a href="/tags/google">google (2) </a> </li> <li class="tags" ><a href="/tags/angular">angular (1) </a> </li> <li class="tags" ><a href="/tags/programming">programming (11) </a> </li> <li class="tags" ><a href="/tags/gagets">gagets (3) </a> </li> <li class="tags" ><a href="/tags/regex">regex (1) </a> </li> <li class="tags" ><a href="/tags/wordpress">wordpress (1) </a> </li> <li class="tags" ><a href="/tags/python">python (4) </a> </li> <li class="tags" ><a href="/tags/twitter">twitter (1) </a> </li> <li class="tags" ><a href="/tags/shazam">shazam (1) </a> </li> <li class="tags" ><a href="/tags/application">application (1) </a> </li> <li class="tags" ><a href="/tags/photo">photo (1) </a> </li> <li class="tags" ><a href="/tags/css">css (1) </a> </li> <li class="tags" ><a href="/tags/bittorrent">bittorrent (1) </a> </li> <li class="tags" ><a href="/tags/amazon">amazon (1) </a> </li> <li class="tags" ><a href="/tags/swift">swift (4) </a> </li> <li class="tags" ><a href="/tags/IOS">IOS (1) </a> </li> <li class="tags" ><a href="/tags/uber">uber (1) </a> </li> <li class="tags" ><a href="/tags/npm">npm (1) </a> </li> <li class="tags" ><a href="/tags/nodejs">nodejs (1) </a> </li> <li class="tags" ><a href="/tags/code">code (1) </a> </li> <li class="tags" ><a href="/tags/code swift">code swift (1) </a> </li> <li class="tags" ><a href="/tags/jekyll">jekyll (1) </a> </li> <li class="tags" ><a href="/tags/GitHub">GitHub (1) </a> </li> <li class="tags" ><a href="/tags/GitHub Pages">GitHub Pages (1) </a> </li> </ul></ul> <div class="btcwdgt-chart"> style="margin-top: 30px"> <script> (function(b,i,t,C,O,I,N) { window.addEventListener('load',function() { if(b.getElementById(C))return; I=b.createElement(i),N=b.getElementsByTagName(i)[0]; I.src=t;I.id=C;N.parentNode.insertBefore(I, N); },false) })(document,'script','https://widgets.bitcoin.com/widget.js','btcwdgt'); </script> </div> </div> </div> </div> <div class="article-ad"> <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5706627784425194" data-ad-slot="8358109938"></ins> <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script> </div> </div> </main><footer class="site-footer h-card"> <data class="u-url" href="/"></data> <div class="wrapper"> <h2 class="footer-heading">Losthuman</h2> <div class="footer-col-wrapper"> <div class="footer-col footer-col-1"> <ul class="contact-list"> <li class="p-name">Losthuman</li><li><a class="u-email" href="mailto:info@losthuman.ru">info@losthuman.ru</a></li></ul> </div> <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://twitter.com/losthuman9"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">losthuman9</span></a></li></ul> </div> <div class="footer-col footer-col-3"> <p>Ничего особо ценного</p> </div> </div> </div> </footer> <script src="/assets/likely.js"></script> </body> </html>
