@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ru"><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://losthuman.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="https://losthuman.ru/" rel="alternate" type="text/html" hreflang="ru" /><updated>2019-12-11T18:24:20+05:00</updated><id>https://losthuman.ru/feed.xml</id><title type="html">Losthuman</title><subtitle>Ничего особо ценного</subtitle><entry><title type="html">Jekyll’s tricks: минификация HTML и CSS</title><link href="https://losthuman.ru/categories/code/2019/06/02/jekyll-s-tricks-minifikatsija-html-i-css.html" rel="alternate" type="text/html" title="Jekyll's tricks: минификация HTML и CSS" /><published>2019-06-02T00:00:00+05:00</published><updated>2019-06-02T00:00:00+05:00</updated><id>https://losthuman.ru/categories/code/2019/06/02/Jekyll's-tricks-minifikatsija-HTML-i-CSS</id><content type="html" xml:base="https://losthuman.ru/categories/code/2019/06/02/jekyll-s-tricks-minifikatsija-html-i-css.html">&lt;p&gt;Если вас тоже раздражает беспорядочная верстка, которую производит движок Jekyll, предлагаю воспользоваться простыми и эффективными способами минифицировать css и html. Без использования плыгинов Jekyll, без Gulp’а, Grunt’а, Rake и прочих приспособ.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ru"><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://losthuman.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="https://losthuman.ru/" rel="alternate" type="text/html" hreflang="ru" /><updated>2020-04-26T08:15:37+05:00</updated><id>https://losthuman.ru/feed.xml</id><title type="html">Losthuman</title><subtitle>Ничего особо ценного</subtitle><entry><title type="html">Jekyll’s tricks: минификация HTML и CSS</title><link href="https://losthuman.ru/categories/code/2019/06/02/jekyll-s-tricks-minifikatsija-html-i-css.html" rel="alternate" type="text/html" title="Jekyll's tricks: минификация HTML и CSS" /><published>2019-06-02T00:00:00+05:00</published><updated>2019-06-02T00:00:00+05:00</updated><id>https://losthuman.ru/categories/code/2019/06/02/Jekyll's-tricks-minifikatsija-HTML-i-CSS</id><content type="html" xml:base="https://losthuman.ru/categories/code/2019/06/02/jekyll-s-tricks-minifikatsija-html-i-css.html">&lt;p&gt;Если вас тоже раздражает беспорядочная верстка, которую производит движок Jekyll, предлагаю воспользоваться простыми и эффективными способами минифицировать css и html. Без использования плыгинов Jekyll, без Gulp’а, Grunt’а, Rake и прочих приспособ.&lt;/p&gt;
 
 &lt;h3 id=&quot;минификация-css&quot;&gt;Минификация CSS&lt;/h3&gt;
 
@@ -76,7 +76,7 @@ layout: compress
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/2019-05-25-Statichesky-sait-na-jekyll-i-GitHub-Pages/9.jpg&quot; alt=&quot;Копируем адрес репозитория&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Копируем адрес нового репозитория и с помощью терминала слонируем этот репозиторий на локалном диске компьютера с помошью команды &lt;code class=&quot;highlighter-rouge&quot;&gt;git clone &amp;lt;name repository&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Копируем адрес нового репозитория и с помощью терминала клонируем этот репозиторий на локалный диск компьютера с помощью команды &lt;code class=&quot;highlighter-rouge&quot;&gt;git clone &amp;lt;name repository&amp;gt;&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/2019-05-25-Statichesky-sait-na-jekyll-i-GitHub-Pages/10.jpg&quot; alt=&quot;Клонируем репозиторий&quot; /&gt;&lt;/p&gt;
 
@@ -86,9 +86,9 @@ layout: compress
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/2019-05-25-Statichesky-sait-na-jekyll-i-GitHub-Pages/12.jpg&quot; alt=&quot;Новая директория&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Далее от по обстоятельствам. Если у вас уже есть  готовый и рабочий проект Jekyll, то можно просто скопировать его в эту директорию. Или, инициализировать новый, опять таки в этой самой директории. Сделать это можно командой &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll new .&lt;/code&gt;. Я для данного примера создам заново проект jekyll.&lt;/p&gt;
+&lt;p&gt;Далее по обстоятельствам. Если у вас уже есть  готовый и рабочий проект Jekyll, то можно просто скопировать его в эту директорию. Или, инициализировать новый, опять таки в этой самой директории. Сделать это можно командой &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll new .&lt;/code&gt;. Я для данного примера создам заново проект jekyll.&lt;/p&gt;
 
-&lt;p&gt;После создания проекта jekyll надо запушить этот проект прямо в репозиторий на GitHub. Делаем это последовательно выполняя следующие команды (но, если вы спеу по git, то сможете сделать это меньшим количеством строк кода):&lt;/p&gt;
+&lt;p&gt;После создания проекта jekyll надо запушить этот проект прямо в репозиторий на GitHub. Делаем это последовательно выполняя следующие команды (но, если вы спец по git, то сможете сделать это меньшим количеством строк кода):&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; git add .
  git commit -m &quot;initial commit&quot;
@@ -103,7 +103,7 @@ layout: compress
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/2019-05-25-Statichesky-sait-na-jekyll-i-GitHub-Pages/14.jpg&quot; alt=&quot;сайт&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Надо подправить ссылки на таблицы стилей в проекте. Для чего прямо в репозитории надо открыть файл &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Надо подправить ссылки на таблицы стилей в проекте. Для чего прямо в репозитории открыть файл &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/2019-05-25-Statichesky-sait-na-jekyll-i-GitHub-Pages/15.jpg&quot; alt=&quot;Редактируем config&quot; /&gt;&lt;/p&gt;
 
@@ -115,7 +115,7 @@ layout: compress
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/2019-05-25-Statichesky-sait-na-jekyll-i-GitHub-Pages/17.jpg&quot; alt=&quot;редактируем переменные&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Чтобы изменения вступили в силу надо их закоммитить. Надо указать описание коммита и нажат на кнопку &lt;code class=&quot;highlighter-rouge&quot;&gt;Commit Changes&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Чтобы изменения вступили в силу надо их закоммитить: Указать описание коммита и нажать на кнопку &lt;code class=&quot;highlighter-rouge&quot;&gt;Commit Changes&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/2019-05-25-Statichesky-sait-na-jekyll-i-GitHub-Pages/18.jpg&quot; alt=&quot;Коммит&quot; /&gt;&lt;/p&gt;
 
