@@ -1,4 +1,316 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ru"><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://losthuman.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="https://losthuman.ru/" rel="alternate" type="text/html" hreflang="ru" /><updated>2020-11-15T17:33:17+05:00</updated><id>https://losthuman.ru/feed.xml</id><title type="html">Losthuman</title><subtitle>Никакого особого смысла в этом сайте нет</subtitle><entry><title type="html">Jekyll’s tricks: минификация HTML и CSS</title><link href="https://losthuman.ru/categories/code/2019/06/02/jekyll-s-tricks-minifikatsija-html-i-css.html" rel="alternate" type="text/html" title="Jekyll's tricks: минификация HTML и CSS" /><published>2019-06-02T00:00:00+05:00</published><updated>2019-06-02T00:00:00+05:00</updated><id>https://losthuman.ru/categories/code/2019/06/02/Jekyll's-tricks-minifikatsija-HTML-i-CSS</id><content type="html" xml:base="https://losthuman.ru/categories/code/2019/06/02/jekyll-s-tricks-minifikatsija-html-i-css.html">Если вас тоже раздражает беспорядочная верстка, которую производит движок Jekyll, предлагаю воспользоваться простыми и эффективными способами минифицировать css и html. Без использования плагинов Jekyll, без Gulp'а, Grunt'а, Rake и прочих приспособ.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ru"><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://losthuman.ru/feed.xml" rel="self" type="application/atom+xml" /><link href="https://losthuman.ru/" rel="alternate" type="text/html" hreflang="ru" /><updated>2020-11-17T23:01:29+05:00</updated><id>https://losthuman.ru/feed.xml</id><title type="html">Losthuman</title><subtitle>Никакого особого смысла в этом сайте нет</subtitle><entry><title type="html">Прогрессивная загрузка картинок в React</title><link href="https://losthuman.ru/categories/code/2020/11/15/progressivnaya-zagruzka-kartinok-react.html" rel="alternate" type="text/html" title="Прогрессивная загрузка картинок в React" /><published>2020-11-15T00:00:00+05:00</published><updated>2020-11-15T00:00:00+05:00</updated><id>https://losthuman.ru/categories/code/2020/11/15/progressivnaya-zagruzka-kartinok-react</id><content type="html" xml:base="https://losthuman.ru/categories/code/2020/11/15/progressivnaya-zagruzka-kartinok-react.html">Вы когда-нибудь задумывались, как [Medium](https://medium.com) загружает изображения? Возможно, вы заметили, как изображения отображаются в несколько этапов. В самом начале  на экране появляется размытая версия изображения, которая затем заменяется полноразмерной версией.
+
+#### Как Medium Stories загружает изображения
+
+- Загрузка изображения не начинается, пока изображение не попадет в область просмотра.
+- Затем загружается «размытый» эскиз.
+- Затем загружается полноразмерное изображение и заменяет эскиз.
+
+Мы можем разделить эту технику загрузки изображений на две отдельные функции.
+
+#### 1. Ленивая загрузка (Lazy loading)
+
+&gt; Ленивая загрузка - это метод, который откладывает загрузку некритических ресурсов во время загрузки страницы. Вместо этого эти некритические ресурсы загружаются в момент необходимости. Что касается изображений, «некритичный» часто является синонимом «вне экрана».— [developers.google.com](https://developers.google.com/web/fundamentals/performance/lazy-loading-guidance/images-and-video)
+
+
+
+#### 2. Размытие картинки
+
+Чтобы что-то отобразить на экране быстрее, мы показываем размытое крошечное изображение, масштабированное до полной ширины. Когда мы закончим загрузку полноразмерного изображения, мы меняем их местами.
+
+Если вы раньше работали с [Gatsby](https://www.gatsbyjs.com/), вы, вероятно, использовали gatsby-image. Gatsby-image дает нам эти две техники без необходимости создавать их самостоятельно. Но мы разработчики. Мы любим все делать сами.
+
+###  Давайте сделаем
+
+Прежде всего, проанализируем проблему.
+
+- Нам нужно знать, какие изображения попали в область просмотра.
+- Как только изображение попадает в область просмотра, нам нужно загрузить миниатюру и полноразмерное изображение.
+- После загрузки полноразмерного изображения нам нужно поменять миниатюру. 
+- Нам нужно убедиться, что наша страница не «прыгает» при загрузке изображений. Наш контейнер-заполнитель должен иметь ту же высоту и ширину, что и наше окончательное изображение.
+
+### Начнем проект
+
+Начнем с создания нового приложения React с помощью приложения `create-react-app`.
+
+```javascript
+npx create-react-app progressive-images
+```
+
+Будем использовать [Unsplash](ttps://unsplash.com/) , как базу данных изображений. Для этого получим с помощью API Unsplash массив из десяти первых попавшихся изображений. Этот массив сохранен в [Github Gist](https://gist.github.com/montezume/daaebfca37120a4994402b31de527c07). 
+
+Скопируйте и вставьте содержимое этой ссылки в файл с именем `images.json`.
+
+Теперь откройте  `App.js` и замените его содержание следующим кодом.
+
+```jsx
+import React from &quot;react&quot;; 
+import images from &quot;./images.json&quot;;
+import ImageContainer from &quot;./components/image-container&quot;;
+import &quot;./App.css&quot;;
+
+function App() {
+  return (
+    &lt;div className=&quot;app&quot;&gt;
+      &lt;div className=&quot;container&quot;&gt;
+        {images.map(res =&gt; {
+          return (
+            &lt;div key={res.id} className=&quot;wrapper&quot;&gt;
+              &lt;ImageContainer
+                src={res.urls.regular}
+                thumb={res.urls.thumb}
+                height={res.height}
+                width={res.width}
+                alt={res.alt_description}
+              /&gt;
+            &lt;/div&gt;
+          );
+        })}
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}
+export default App;
+```
+
+После откройте `App.css` и вставьте следующий код.
+
+```css
+.app {
+  display: flex;
+  justify-content: center;
+  padding-top: 1em;
+}
+.container {
+  width: 100%;
+  max-width: 600px;
+}
+.wrapper {
+  padding: 1em 0;
+}
+```
+
+Теперь давайте создадим директорию  `components`, в которую будем помещать компоненты для нашего приложения. И, первым делом создадим файл `image-container.js`, с компонентом `ImageContainer`, отвечающим за контейнер для тех изображений, которые мы планируем загружать. Там же создадим файл `image-container.css` со стилями для нашего компонента.
+
+![5]({{page.images_url}}/5.png)
+
+В компоненте `ImageContainer` определяем  соотношение сторон изображения  в константе`aspectRatio`. Оно рассчитывается в процентах путем деления ширины изображения на его на высоту и умножения на `100`. Затем мы добавляем свойство `padding-bottom ` к стилю нашего контейнера изображения с этим значением. Свойство `padding-bottom ` задает внутренний нижний отступ от содержания до нижней границы элемента. Например, изображение 1024 x 768 пикселей имеет соотношение сторон 0,75. В этом случае  `padding-bottom: 75%` .
+
+```jsx
+import React from &quot;react&quot;;
+import &quot;./image-container.css&quot;;
+const ImageContainer = props =&gt; {
+  const aspectRatio = (props.height / props.width) * 100; 
+return (
+    &lt;div
+      className=&quot;image-container&quot;
+      style={ { paddingBottom: `${aspectRatio}%` }} 
+    /&gt;
+  );
+};
+export default ImageContainer;
+```
+
+И `image-container.css` .
+
+```css
+.image-container {
+  position: relative;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+```
+
+Мы можем запустить наше приложение с `yarn start` (или `npm start`) и посмотреть, как оно выглядит.
+
+![1]({{page.images_url}}/1.gif)
+
+Теперь у нас есть несколько блоков того же размера, что и изображения, которые мы хотим визуализировать.
+
+### Intersection Observer
+
+&gt; API-интерфейс Intersection Observer обеспечивает способ асинхронного наблюдения за изменениями пересечения целевого элемента с элементом-предком или с окном просмотра документа верхнего уровня - developer.mozilla.org
+
+Сделаем кастомный хук . Создаем директорию `hooks`, в которой  файл `use-intersection-observer.js`.
+
+```jsx
+import React from &quot;react&quot;;
+const useIntersectionObserver = ({
+  target,
+  onIntersect,
+  threshold = 0.1,
+  rootMargin = &quot;0px&quot;
+}) =&gt; {
+  React.useEffect(() =&gt; {
+    const observer = new IntersectionObserver(onIntersect, {
+      rootMargin,
+      threshold
+    });
+const current = target.current;
+observer.observe(current);
+return () =&gt; {
+      observer.unobserve(current);
+    };
+  });
+};
+export default useIntersectionObserver;
+```
+
+Поскольку мы не определили параметр `root`, `IntersectionObserver` по умолчанию использует область просмотра. Мы определили параметр  `threshold` равным  `0,1`. Это означает, что когда 10% таргета  видны в области просмотра, вызывается callback функция.
+
+### Использование нашего кастомного хука
+
+Чтобы использовать этот кастомный хук, нам нужно вызвать его с таргетом и callback функцией. Наш таргет в данном случае -  React `ref`, прикрепленный к контейнеру `div`.
+
+Наша callback функция установит переменную состояния, указывающую, что изображение в зоне видимости. Затем функция вызовет `Observer.unobserve`. Когда изображение становится видимым, нам больше не нужен `IntersectionObserver`.
+
+Сделаем следующие изменения  в файле `image-container.js`.
+
+```jsx
+import React from &quot;react&quot;;
+import useIntersectionObserver from &quot;../hooks/use-intersection-observer&quot;;
+import &quot;./image-container.css&quot;;
+const ImageContainer = props =&gt; {
+  const ref = React.useRef();
+  const [isVisible, setIsVisible] = React.useState(false);
+useIntersectionObserver({
+    target: ref,
+    onIntersect: ([{ isIntersecting }], observerElement) =&gt; {
+      if (isIntersecting) {
+        setIsVisible(true);
+        observerElement.unobserve(ref.current);
+      }
+    }
+  });
+const aspectRatio = (props.height / props.width) * 100;
+return (
+    &lt;div
+      ref={ref}
+      className=&quot;image-container&quot;
+      style={ { paddingBottom: `${aspectRatio}%` }}
+    &gt;
+      {isVisible &amp;&amp; (
+        &lt;img className=&quot;image&quot; src={props.src} alt={props.alt} /&gt;
+       )}
+    &lt;/div&gt;
+  );
+};
+export default ImageContainer;
+```
+
+Теперь мы визуализируем полноразмерное изображение, когда наш компонент входит в область просмотра. В действии это выглядит так.
+
+![2]({{page.images_url}}/2.gif)
+
+Наше приложение теперь &quot;лениво&quot; загружает изображения. Наши изображения загружаются только тогда, когда они видны в области просмотра. Если вы проверите вкладку Network в браузере, вы можете увидеть это в действии. Загрузка фотогрфий происходит &quot;лесенкой&quot; или &quot;водопадом&quot;.
+
+![3]({{page.images_url}}/3.png)
+
+#### Добавление техники размытия (Blur - эффект)
+
+Начнем с создания двух новых файлов в директории `components` : `image.js` и `image.css`. Наш компонент `Image ` будет отображать два изображения: полноразмерное изображение и миниатюру. Мы будем скрывать миниатюру, когда загружается полноразмерное изображение.
+
+Добавим следующий код в файл `components/image.js`.
+
+```jsx
+import React from &quot;react&quot;;
+import &quot;./image.css&quot;;
+const Image = props =&gt; {
+  const [isLoaded, setIsLoaded] = React.useState(false);
+  return (
+    &lt;React.Fragment&gt;
+      &lt;img
+        className=&quot;image thumb&quot;
+        alt={props.alt}
+        src={props.thumb}
+        style={ { visibility: isLoaded ? &quot;hidden&quot; : &quot;visible&quot; }}
+      /&gt;
+      &lt;img
+        onLoad={() =&gt; {
+          setIsLoaded(true);
+        }}
+        className=&quot;image full&quot;
+        style={ { opacity: isLoaded ? 1 : 0 }}
+        alt={props.alt}
+        src={props.src}
+      /&gt;
+    &lt;/React.Fragment&gt;
+  );
+};
+export default Image;
+```
+
+ И в файл `components/image.css` добавим код CSS.
+
+```jsx
+.image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.full {
+  transition: opacity 400ms ease 0ms;
+}
+.thumb {
+  filter: blur(20px);
+  transform: scale(1.1);
+  transition: visibility 0ms ease 400ms;
+}
+```
+Наш основной компонент `ImageContainer` после добавления в него компонента `Image` должен выглядеть следующим образом:
+
+```jsx
+import React from &quot;react&quot;;
+import useIntersectionObserver from &quot;../hooks/use-intersection-observer&quot;;
+import &quot;./image-container.css&quot;;
+import Image from &quot;./image&quot;;
+
+const ImageContainer = (props) =&gt; {
+  const ref = React.useRef();
+  const [isVisible, setIsVisible] = React.useState(false);
+
+  useIntersectionObserver({
+    target: ref,
+    onIntersect: ([{ isIntersecting }], observerElement) =&gt; {
+      if (isIntersecting) {
+        setIsVisible(true);
+        observerElement.unobserve(ref.current);
+      }
+    },
+  });
+
+  const aspectRatio = (props.height / props.width) * 100;
+
+  return (
+    &lt;div
+      ref={ref}
+      className=&quot;image-container&quot;
+      style={ { paddingBottom: `${aspectRatio}%` }}
+    &gt;
+      {isVisible &amp;&amp; (
+        &lt;Image src={props.src} thumb={props.thumb} alt={props.alt} /&gt;
+      )}
+    &lt;/div&gt;
+  );
+};
+
+export default ImageContainer;
+```
+
+Теперь давайте запустим наше приложение в последний раз. Обязательно откройте devtools  в браузере и сбросьте кеширование.
+
+![4]({{page.images_url}}/4.gif)
+
+Мы сделали приложение React с отложенной загрузкой изображений. Наше приложение отображает изображения только после того, как они попадают в область просмотра. Он также постепенно отображает их, сначала показывая размытые миниатюры.
+
+
+
+
+
+[Источник]({{page.source_url}})</content><author><name></name></author><category term="react" /><category term="tutorials" /><summary type="html">Вы когда-нибудь задумывались, как Medium загружает изображения? Возможно, вы заметили, как изображения отображаются в несколько этапов. В самом начале на экране появляется размытая версия изображения, которая затем заменяется полноразмерной версией.</summary></entry><entry><title type="html">Jekyll’s tricks: минификация HTML и CSS</title><link href="https://losthuman.ru/categories/code/2019/06/02/jekyll-s-tricks-minifikatsija-html-i-css.html" rel="alternate" type="text/html" title="Jekyll's tricks: минификация HTML и CSS" /><published>2019-06-02T00:00:00+05:00</published><updated>2019-06-02T00:00:00+05:00</updated><id>https://losthuman.ru/categories/code/2019/06/02/Jekyll's-tricks-minifikatsija-HTML-i-CSS</id><content type="html" xml:base="https://losthuman.ru/categories/code/2019/06/02/jekyll-s-tricks-minifikatsija-html-i-css.html">Если вас тоже раздражает беспорядочная верстка, которую производит движок Jekyll, предлагаю воспользоваться простыми и эффективными способами минифицировать css и html. Без использования плагинов Jekyll, без Gulp'а, Grunt'а, Rake и прочих приспособ.
 
 ### Минификация CSS
 
@@ -1609,30 +1921,7 @@ Swift является первым языком, созданным на осн
 
 В этом уроке вы узнали, что типы являются фундаментальной частью программирования. Это то, что позволяет правильно хранить данные. Кроме этого вы познакомились со строками и кортежами, а также кучей числовых типов.
 
-В следующей части вы узнаете о Булевой логике и простом управлении потоком передачи данных.</content><author><name></name></author><category term="swift" /><category term="programming" /><summary type="html">Добро пожаловать во вторую часть мини-серии по изучению языка программирования Swift, в которой вы познакомитесь со строками, преобразованием типов и кортежами. Данный материал является переводом tutorial с сайта raywenderlich.com.</summary></entry><entry><title type="html">Как много денег потратил генеральный директор Apple Тим Кук в попытках предотвратить президентство Дональда Трампа</title><link href="https://losthuman.ru/categories/technews/2018/10/06/kak-mnogo-deneg-potratil-generalnyj-direktor.html" rel="alternate" type="text/html" title="Как много денег потратил генеральный директор Apple Тим Кук в попытках предотвратить президентство Дональда Трампа" /><published>2018-10-06T00:00:00+05:00</published><updated>2018-10-06T00:00:00+05:00</updated><id>https://losthuman.ru/categories/technews/2018/10/06/Kak-mnogo-deneg-potratil-generalnyj-direktor</id><content type="html" xml:base="https://losthuman.ru/categories/technews/2018/10/06/kak-mnogo-deneg-potratil-generalnyj-direktor.html">По [сообщению]({{page.source_url}}) портала **Businessinsider** cортудники Apple совсем не хотели, чтобы президентом США стал Дональд Трамп, ну, как минимум не хотел Тим Кук.
-
-Подробный [анализ политических пожертвований, сделанных сотрудниками Apple](https://gov predict.com/blog/contributions-by-apple-employees/)
-ясно показывает, что Хиллари Клинтон была крупным бенефициаром пожертвований от компании из Купертино.
-
-В общей сложности она получила 1,8 млн. долларов от сотрудников Apple. Главным пожертвователем был Тим Кук, он направил в избирательный фонд Хилари Клинтон самую крупну сумму из всех персональных пожертвований купертиновцев - 236 100 долларов.
-
-&lt;blockquote class=&quot;twitter-tweet&quot; data-lang=&quot;en&quot;&gt;&lt;p lang=&quot;und&quot; dir=&quot;ltr&quot;&gt;&lt;a href=&quot;https://t.co/hrCAaTz96Y&quot;&gt;pic.twitter.com/hrCAaTz96Y&lt;/a&gt;&lt;/p&gt;&amp;mdash; Joshua Cohen (@jcohen570) &lt;a href=&quot;https://twitter.com/jcohen570/status/768609363086815232?ref_src=twsrc%5Etfw&quot;&gt;August 25, 2016&lt;/a&gt;&lt;/blockquote&gt; &lt;script async src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
-
-В противоположность этому факту персонал Apple внес только 6 786 долларов в фонд избирательной кампании Трампа в 2016 году. Пожертвования Apple Клинтон также затмили 610 805,00 долларов сделанные работниками Amazon.
-
-Пожертвование Тима Кука в избирательный фонд Клинтон контрастирует с его довольно скромными политическими взносами в прошлом, которые были парктически равномерно распределены между демократами и республиканцами.
-
-![Пожертвования генерального директора Applе]({{page.images_url}}1.png)
-
-[По информации CNBC](https://www.cnbc.com/2016/08/24/apples-tim-cook-has-spread-his-political-money-to-both-sides-of-the-aisle.html), Кук лично внес 10 800,00 долларов республиканским кандидатом на их кампании начиная с 2008 года, и и за тот же период он отдал 10 400,00 долларов кандидатам от демокартической партии США.
-
-Кук также рассматривался как потенциальный кандидат на пост вице-президента США, в случае победы Клинтон  на президентских выборах 2016 года. Эта информация просочилась в прессу после утечек конфиденциальной информации, которая была опубликована Wikileaks.
-
-С тех пор как Трамп был избран, Кук занял прагматичный подход к отношениям с
-президентом. Они встречались несколько раз, включая проведение
-последних переговоров по поводу торговой войны с Китаем.
-
-В целом же персонал Apple пожертвовал более чем 1,3 млн. долларов в избирательные фонды демократов в 2016 году, и всего лишь около 232 тысяч долларов на компании республиканской партии США.</content><author><name></name></author><category term="apple" /><summary type="html">По сообщению портала Businessinsider cортудники Apple совсем не хотели, чтобы президентом США стал Дональд Трамп, ну, как минимум не хотел Тим Кук.</summary></entry><entry><title type="html">Facebook и Apple подтвердили, что они были целью хакерских атак Supermicro</title><link href="https://losthuman.ru/categories/technews/2018/10/06/facebook-apple-podtverdili-chto-oni-byli.html" rel="alternate" type="text/html" title="Facebook и Apple подтвердили, что они были целью хакерских атак Supermicro" /><published>2018-10-06T00:00:00+05:00</published><updated>2018-10-06T00:00:00+05:00</updated><id>https://losthuman.ru/categories/technews/2018/10/06/Facebook-Apple-podtverdili-chto-oni-byli</id><content type="html" xml:base="https://losthuman.ru/categories/technews/2018/10/06/facebook-apple-podtverdili-chto-oni-byli.html">Интрига нарастает. В [материале]({{page.source_url}}) **Mashable** сообщается, что после [доклада Bloomberg](https://www.bloomberg.com/news/features/2018-10-04/the-big-hack-how-Китай-используется-в-маленьких-чип-корни-Америка-с-топ-компаний) о китайской атаке через цепочку поставок комплектующих производителя серверов Supermicro в крупные американские компании, включая Apple и Amazon, начала появляться реакция  от некоторых участников этой драмы. Две из этих крупных американских компаний, подтвердили, что пострадали от вредоносной атаки: это Apple и Facebook.
+В следующей части вы узнаете о Булевой логике и простом управлении потоком передачи данных.</content><author><name></name></author><category term="swift" /><category term="programming" /><summary type="html">Добро пожаловать во вторую часть мини-серии по изучению языка программирования Swift, в которой вы познакомитесь со строками, преобразованием типов и кортежами. Данный материал является переводом tutorial с сайта raywenderlich.com.</summary></entry><entry><title type="html">Facebook и Apple подтвердили, что они были целью хакерских атак Supermicro</title><link href="https://losthuman.ru/categories/technews/2018/10/06/facebook-apple-podtverdili-chto-oni-byli.html" rel="alternate" type="text/html" title="Facebook и Apple подтвердили, что они были целью хакерских атак Supermicro" /><published>2018-10-06T00:00:00+05:00</published><updated>2018-10-06T00:00:00+05:00</updated><id>https://losthuman.ru/categories/technews/2018/10/06/Facebook-Apple-podtverdili-chto-oni-byli</id><content type="html" xml:base="https://losthuman.ru/categories/technews/2018/10/06/facebook-apple-podtverdili-chto-oni-byli.html">Интрига нарастает. В [материале]({{page.source_url}}) **Mashable** сообщается, что после [доклада Bloomberg](https://www.bloomberg.com/news/features/2018-10-04/the-big-hack-how-Китай-используется-в-маленьких-чип-корни-Америка-с-топ-компаний) о китайской атаке через цепочку поставок комплектующих производителя серверов Supermicro в крупные американские компании, включая Apple и Amazon, начала появляться реакция  от некоторых участников этой драмы. Две из этих крупных американских компаний, подтвердили, что пострадали от вредоносной атаки: это Apple и Facebook.
 
 В отличие от Amazon и отрицавшей в первоначальном заявлении Apple, теперь
 Facebook и та же Apple подтвердили, что нашли вредоносное ПО всерверах Supermicro.
